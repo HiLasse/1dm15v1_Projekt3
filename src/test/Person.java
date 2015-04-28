@@ -19,6 +19,9 @@ public class Person {
 	/**
 	 * Telephone number of person
 	 */
+	
+	
+	private String test;
 	private int telephone;
 	
 	/**
