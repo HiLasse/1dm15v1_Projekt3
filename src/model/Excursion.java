@@ -1,9 +1,9 @@
 package model;
 /**
- * A Udflugt 
+ * An Excursion 
  * @author Lasse
  *
  */
-public class Excurtion {
+public class Excursion {
 
 }
