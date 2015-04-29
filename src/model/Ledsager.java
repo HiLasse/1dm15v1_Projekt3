@@ -2,7 +2,7 @@ package model;
 /**
  * A person accompanying a Deltager
  * @author Lasse
- * A
+ * 
  */
 public class Ledsager 
 {
