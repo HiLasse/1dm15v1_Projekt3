@@ -24,8 +24,41 @@ public class Company {
 	 */
 	private int telephone;
 	
-	public Company(){
-		
+	
+	/**
+	 * @param name is the name of the company
+	 * @param address is the address of the company
+	 * @param telephone is the phone number of the company
+	 */
+	public Company(String name, String address, int telephone){
+		this.name = name;
+		this.address = address;
+		this.telephone = telephone;		
 	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getAddress() {
+		return address;
+	}
+	
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
+	public int getTelephone() {
+		return telephone;
+	}
+	
+	public void setTelephone(int telephone) {
+		this.telephone = telephone;
+	}
+	
 
 }
