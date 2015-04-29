@@ -21,7 +21,7 @@ public class Storage
 
 	public static ArrayList<Conference> getconferences() 
 	{
-		return new ArrayList<Conference>(Conferences);
+		return new ArrayList<Conference>(conferences);
 	}
 
 	public static void addKonference(Conference conference) 
