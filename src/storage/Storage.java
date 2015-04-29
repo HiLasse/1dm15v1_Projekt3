@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import model.Company;
 import model.Participant;
 import model.Hotel;
-import model.Konference;
+import model.Conference;
 import model.Registration;
 
 public class Storage 
 {
-	private static ArrayList<Konference> konferencer = new ArrayList<>();
+	private static ArrayList<Conference> conferences = new ArrayList<>();
 	private static ArrayList<Participant> participents  = new ArrayList<>();
 	private static ArrayList<Hotel> hoteller = new ArrayList<>();
 	private static ArrayList<Registration> registrations = new ArrayList<>();
@@ -19,19 +19,19 @@ public class Storage
 	
 	//----------------------------------------------------------------
 
-	public static ArrayList<Konference> getKonferencer() 
+	public static ArrayList<Conference> getconferences() 
 	{
-		return new ArrayList<Konference>(konferencer);
+		return new ArrayList<Conference>(Conferences);
 	}
 
-	public static void addKonference(Konference Konference) 
+	public static void addKonference(Conference conference) 
 	{
-		konferencer.add(Konference);
+		conferences.add(conference);
 	}
 
-	public static void removeKonference(Konference Konference) 
+	public static void removeKonference(Conference conference) 
 	{
-		konferencer.remove(Konference);
+		conferences.remove(conference);
 	}
 
 	//----------------------------------------------------------------
