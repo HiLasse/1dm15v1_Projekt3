@@ -6,7 +6,6 @@ public class Hotel
 {	
 	private String name;
 	private double pricePrDay;
-
 	// link to Ekstraydelser class (--> 0..*)
 	private ArrayList<HotelService> services;
 	
@@ -20,8 +19,13 @@ public class Hotel
 
 	public double calcPrice()
 	{
-
-		return 0.0;
+		double servicePrice = 0;
+		for (HotelService x: services)
+		{
+			servicePrice += x.getPrice();
+		}
+		
+		return servicePrice;
 	}
 
 	public double getpricePrDay()

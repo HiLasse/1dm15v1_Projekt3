@@ -27,7 +27,7 @@ public class Registration
 		double totalPrice = 0;
 		if (hotel != null)
 		{
-			totalPrice = hotel.getPricePrDay()*days();
+			totalPrice = hotel.calcPrice()+hotel.getpricePrDay()*days();
 		}
 		return totalPrice;
 	}
