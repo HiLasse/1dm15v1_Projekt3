@@ -1,9 +1,13 @@
 package service;
 
-import storage.Storage;
+import java.time.LocalDateTime;
+
 import model.Company;
+import model.Conference;
 import model.Hotel;
 import model.Participant;
+import model.Registration;
+import storage.Storage;
 
 public class Service {	
 	//Company methods
@@ -62,4 +66,36 @@ public class Service {
 	public static void deleteHotel(Hotel hotel) {
 		Storage.removeHotel(hotel);
 	}
+	
+	
+	//-----------------------------------------------------------------------------------------
+	
+	//Conference methods
+	
+	public static Conference createConference(String name, String address, LocalDateTime startTime, LocalDateTime endTime) {
+		Conference conference = new Conference(name, address, startTime, endTime);
+		Storage.addConference(conference);
+		return conference;
+	}
+	
+	public static void updateConference(Conference conference, String name, String address, LocalDateTime startTime, LocalDateTime endTime) {
+		conference.setName(name);
+		conference.setAddress(address);
+		conference.setEndTime(endTime);
+		conference.setStartTime(startTime);
+	}
+	
+	public static void deleteConference(Conference conference) {
+		Storage.removeConference(conference);
+	}
+	
+	//----------------------------------------------------------------------------------------
+	
+	//Registration methods
+	
+	public static Registration createRegistration() {
+		//TODO: add method
+		return null;
+	}
+	
 }

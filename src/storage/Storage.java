@@ -24,12 +24,12 @@ public class Storage
 		return new ArrayList<Conference>(conferences);
 	}
 
-	public static void addKonference(Conference conference) 
+	public static void addConference(Conference conference) 
 	{
 		conferences.add(conference);
 	}
 
-	public static void removeKonference(Conference conference) 
+	public static void removeConference(Conference conference) 
 	{
 		conferences.remove(conference);
 	}
