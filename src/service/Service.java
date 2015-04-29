@@ -45,5 +45,7 @@ public class Service {
 	
 	//-----------------------------------------------------------------------------------------
 	
+	//Hotels methods
 	
+	public static Hotel createHotel()
 }

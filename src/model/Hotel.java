@@ -9,7 +9,7 @@ public class Hotel {
 	private boolean enkeltværelse;
 	
 	// link to Ekstraydelser class (--> 0..*)
-	private ArrayList<Hotelydelser> ekstraydelser;
+	private ArrayList<HotelService> services;
 	
 	
 	public Hotel()
