@@ -1,21 +1,21 @@
 package model;
 /**
- * A person accompanying a Deltager
+ * A person accompanying a Participant
  * @author Lasse
  * 
  */
-public class Ledsager 
+public class Companion 
 {
 	/**
-	 * Name of Ledsager
+	 * Name of Companion
 	 */
 	private String name;
 	
 	/**
-	 * Constructs a Ledsager
-	 * @param name of Ledsager
+	 * Constructs a Companion
+	 * @param name of Companion
 	 */
-	public Ledsager(String name)
+	public Companion(String name)
 	{
 		this.name = name;
 	}
@@ -23,7 +23,7 @@ public class Ledsager
 	
 	/**
 	 * 
-	 * @return name of Ledsager
+	 * @return name of Companion
 	 */
 	public String getName() {
 		return name;
@@ -31,7 +31,7 @@ public class Ledsager
 	
 	/**
 	 * 
-	 * @param change name of Ledsager
+	 * @param change name of Companion
 	 */
 	public void setName(String name) {
 		this.name = name;
