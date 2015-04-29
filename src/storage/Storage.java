@@ -2,7 +2,8 @@ package storage;
 
 import java.util.ArrayList;
 
-import model.Deltager;
+import model.Company;
+import model.Participent;
 import model.Hotel;
 import model.Konference;
 import model.Tilmelding;
@@ -10,9 +11,10 @@ import model.Tilmelding;
 public class Storage 
 {
 	private static ArrayList<Konference> konferencer = new ArrayList<>();
-	private static ArrayList<Deltager> deltagerer  = new ArrayList<>();
+	private static ArrayList<Participent> deltagerer  = new ArrayList<>();
 	private static ArrayList<Hotel> hoteller = new ArrayList<>();
 	private static ArrayList<Tilmelding> tilmeldinger = new ArrayList<>();
+	private static ArrayList<Company> companies = new ArrayList<>();
 	
 	
 	//----------------------------------------------------------------
@@ -34,15 +36,15 @@ public class Storage
 
 	//----------------------------------------------------------------
 
-	public static ArrayList<Deltager> getdeltagerer() {
-		return new ArrayList<Deltager>(deltagerer);
+	public static ArrayList<Participent> getdeltagerer() {
+		return new ArrayList<Participent>(deltagerer);
 	}
 
-	public static void addDeltager(Deltager Deltager) {
+	public static void addDeltager(Participent Deltager) {
 		deltagerer.add(Deltager);
 	}
 
-	public static void removeDeltager(Deltager Deltager) {
+	public static void removeDeltager(Participent Deltager) {
 		deltagerer.remove(Deltager);
 	}
 
@@ -73,5 +75,19 @@ public class Storage
 
     public static void removeTilmelding(Tilmelding Tilmelding) {
         tilmeldinger.remove(Tilmelding);
+    }
+    
+    //----------------------------------------------------------------
+    
+    public static ArrayList<Company> getCompany() {
+    	return new ArrayList<Company>(companies);
+    }
+    
+    public static void addCompany(Company company) {
+    	companies.add(company);
+    }
+    
+    public static void removeCompany(Company company) {
+    	companies.remove(company);
     }
 }
