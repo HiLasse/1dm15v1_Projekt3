@@ -21,7 +21,7 @@ public class Hotel
 		return 0.0;
 	}
 
-	public double getpricePrDay()
+	public double getPricePrDay()
 	{
 		return pricePrDay;
 	}

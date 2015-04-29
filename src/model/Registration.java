@@ -1,6 +1,8 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class Registration 
@@ -21,12 +23,20 @@ public class Registration
 	public double calcPrice()
 	{
 		double totalPrice = 0;
-		int days = departureDate -  arrivalDate;
 		if (hotel != null)
 		{
-			totalPrice = hotel.getPricePrDay()*(departureDate - arrivalDate);
+			totalPrice = hotel.getPricePrDay()*days();
 		}
 		return totalPrice;
+	}
+	
+	
+	/**
+	 * @return days for the registration
+	 */
+	private long days()
+	{
+		return ChronoUnit.DAYS.between(arrivalDate, departureDate);
 	}
 	
 	
