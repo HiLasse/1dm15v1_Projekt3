@@ -17,7 +17,5 @@ public class Ledsager
 	//Mutator
 	public void setName(String name) {
 		this.name = name;
-	}
-	
-	
+	}	
 }

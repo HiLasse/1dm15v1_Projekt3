@@ -20,8 +20,6 @@ public class Deltager {
 	 * Telephone number of person
 	 */
 	
-	
-	private String test;
 	private int telephone;
 	
 	/**
