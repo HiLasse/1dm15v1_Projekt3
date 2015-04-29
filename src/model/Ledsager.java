@@ -2,7 +2,7 @@ package model;
 /**
  * A person accompanying a Deltager
  * @author Lasse
- *
+ * A
  */
 public class Ledsager 
 {
@@ -13,7 +13,7 @@ public class Ledsager
 	
 	/**
 	 * Constructs a Ledsager
-	 * @param name
+	 * @param name of Ledsager
 	 */
 	public Ledsager(String name)
 	{
