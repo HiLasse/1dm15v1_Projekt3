@@ -48,9 +48,18 @@ public class Service {
 	
 	//Hotels methods
 	
-	public static Hotel createHotel() {
-		Hotel hotel = new Hotel();
+	public static Hotel createHotel(String name, double pricePrDay) {
+		Hotel hotel = new Hotel(name, pricePrDay);
 		Storage.addHotel(hotel);
 		return hotel;
+	}
+	
+	public static void updateHotel(Hotel hotel, String name, double pricePrDay) {
+		hotel.setName(name);
+		hotel.setPricePrDay(pricePrDay);
+	}
+	
+	public static void deleteHotel(Hotel hotel) {
+		Storage.removeHotel(hotel);
 	}
 }

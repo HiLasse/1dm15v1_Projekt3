@@ -1,12 +1,11 @@
 package storage;
 
-import Hotel;
-
 import java.util.ArrayList;
 
 import model.Company;
-import model.Participant;
 import model.Conference;
+import model.Hotel;
+import model.Participant;
 import model.Registration;
 
 public class Storage 
