@@ -59,6 +59,4 @@ public class Company {
 	public void setTelephone(int telephone) {
 		this.telephone = telephone;
 	}
-	
-
 }

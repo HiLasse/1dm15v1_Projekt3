@@ -10,39 +10,34 @@ public class Participant {
 	 * First and last name of person
 	 */
 	private String name;
-	
+
 	/**
 	 * Full address of person
 	 */
 	private String address;
-	
+
 	/**
 	 * Telephone number of person
 	 */
-	
+
 	private int telephone;
-	
+
 	/**
 	 * e-mail address of person
 	 */
 	private String email;
-	
+
 	/**
 	 * Company person works for (company class)
 	 */
-	// Implement
-	
-	/**
-	 * One or more attendances of person implemented as a class (attendance) 
-	 */
-	// Implement
-	
+	private Company company;
+
+
 	public Participant(String name, String address, int telephone, String email){
 		this.name = name;
 		this.address = address;
 		this.telephone = telephone;
 		this.email = email;
-		//Todo implement company class and attendance class
 	}
 
 	/**
@@ -108,7 +103,12 @@ public class Participant {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	//TODO; implement getters and setters for company and attendance classes
 
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
+	}
 }
