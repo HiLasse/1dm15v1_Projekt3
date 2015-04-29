@@ -2,7 +2,7 @@ package service;
 
 import storage.Storage;
 import model.Company;
-import model.Participent;
+import model.Participant;
 
 public class Service {	
 	//Company methods
@@ -26,9 +26,24 @@ public class Service {
 
 	//Participent methods
 	
-	public static Participent createParticipent(String name, String address, int telephone, String email) {
-		Participent participent = new Participent(name, address, telephone, email);
-		Storage.addDeltager(participent);
-		return participent;
+	public static Participant createParticipant(String name, String address, int telephone, String email) {
+		Participant participant = new Participant(name, address, telephone, email);
+		Storage.addParticipent(participant);
+		return participant;
 	}
+	
+	public static void updateParticipant(Participant participant, String name, String address, int telephone, String email) {
+		participant.setAddress(address);
+		participant.setEmail(email);
+		participant.setName(name);
+		participant.setTelephone(telephone);
+	}
+	
+	public static void deleteParticipant(Participant participant) {
+		Storage.removeParticipent(participant);
+	}
+	
+	//-----------------------------------------------------------------------------------------
+	
+	
 }

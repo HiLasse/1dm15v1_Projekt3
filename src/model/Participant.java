@@ -5,7 +5,7 @@ package model;
  * Must be linked with the company class
  * and can be linked with attendance class
  */
-public class Participent {
+public class Participant {
 	/**
 	 * First and last name of person
 	 */
@@ -37,7 +37,7 @@ public class Participent {
 	 */
 	// Implement
 	
-	public Participent(String name, String address, int telephone, String email){
+	public Participant(String name, String address, int telephone, String email){
 		this.name = name;
 		this.address = address;
 		this.telephone = telephone;

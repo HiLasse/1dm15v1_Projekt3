@@ -3,17 +3,17 @@ package storage;
 import java.util.ArrayList;
 
 import model.Company;
-import model.Participent;
+import model.Participant;
 import model.Hotel;
 import model.Konference;
-import model.Tilmelding;
+import model.Registration;
 
 public class Storage 
 {
 	private static ArrayList<Konference> konferencer = new ArrayList<>();
-	private static ArrayList<Participent> deltagerer  = new ArrayList<>();
+	private static ArrayList<Participant> participents  = new ArrayList<>();
 	private static ArrayList<Hotel> hoteller = new ArrayList<>();
-	private static ArrayList<Tilmelding> tilmeldinger = new ArrayList<>();
+	private static ArrayList<Registration> registrations = new ArrayList<>();
 	private static ArrayList<Company> companies = new ArrayList<>();
 	
 	
@@ -36,16 +36,16 @@ public class Storage
 
 	//----------------------------------------------------------------
 
-	public static ArrayList<Participent> getdeltagerer() {
-		return new ArrayList<Participent>(deltagerer);
+	public static ArrayList<Participant> getParticipent() {
+		return new ArrayList<Participant>(participents);
 	}
 
-	public static void addDeltager(Participent Deltager) {
-		deltagerer.add(Deltager);
+	public static void addParticipent(Participant participent) {
+		participents.add(participent);
 	}
 
-	public static void removeDeltager(Participent Deltager) {
-		deltagerer.remove(Deltager);
+	public static void removeParticipent(Participant participent) {
+		participents.remove(participent);
 	}
 
 	//----------------------------------------------------------------
@@ -65,16 +65,16 @@ public class Storage
 	
 	//----------------------------------------------------------------
 	
-    public static ArrayList<Tilmelding> gettilmeldinger() {
-        return new ArrayList<Tilmelding>(tilmeldinger);
+    public static ArrayList<Registration> getRegistration() {
+        return new ArrayList<Registration>(registrations);
     }
 
-    public static void addTilmelding(Tilmelding Tilmelding) {
-        tilmeldinger.add(Tilmelding);
+    public static void addRegistration(Registration registration) {
+        registrations.add(registration);
     }
 
-    public static void removeTilmelding(Tilmelding Tilmelding) {
-        tilmeldinger.remove(Tilmelding);
+    public static void removeRegistration(Registration registration) {
+        registrations.remove(registration);
     }
     
     //----------------------------------------------------------------
