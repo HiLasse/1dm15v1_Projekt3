@@ -2,6 +2,7 @@ package service;
 
 import storage.Storage;
 import model.Company;
+import model.Hotel;
 import model.Participant;
 
 public class Service {	
@@ -47,5 +48,9 @@ public class Service {
 	
 	//Hotels methods
 	
-	public static Hotel createHotel()
+	public static Hotel createHotel() {
+		Hotel hotel = new Hotel();
+		Storage.addHotel(hotel);
+		return hotel;
+	}
 }
