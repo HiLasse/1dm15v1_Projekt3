@@ -6,6 +6,7 @@ package model;
  * and can be linked with attendance class
  */
 public class Participant {
+	//Fields
 	/**
 	 * First and last name of Participant
 	 */
@@ -32,6 +33,10 @@ public class Participant {
 	 */
 	private Company company;
 
+	//-----------------------------------------------------------------------------------------
+
+	//Constructor
+	
 	/**
 	 * Constructs a Participant
 	 * @param name of Participant
@@ -46,6 +51,10 @@ public class Participant {
 		this.email = email;
 	}
 
+	//-----------------------------------------------------------------------------------------
+
+	//name methods
+	
 	/**
 	 * Get the name of Participant
 	 * @return the persons name
@@ -62,6 +71,10 @@ public class Participant {
 		this.name = name;
 	}
 
+	//-----------------------------------------------------------------------------------------
+
+	//address methods
+	
 	/**
 	 * Get the address of Participant
 	 * @return the address of Participant
@@ -78,6 +91,10 @@ public class Participant {
 		this.address = address;
 	}
 
+	//-----------------------------------------------------------------------------------------
+
+	//telephone methods
+	
 	/**
 	 * Get the telephone number of Participant
 	 * @return the persons telephone number
@@ -94,8 +111,12 @@ public class Participant {
 		this.telephone = telephone;
 	}
 
+	//-----------------------------------------------------------------------------------------
+
+	//email methods
+	
 	/**
-	 * Gets the email addres of Participant
+	 * Gets the email address of Participant
 	 * @return the persons email
 	 */
 	public String getEmail() {
@@ -110,6 +131,10 @@ public class Participant {
 		this.email = email;
 	}
 
+	//-----------------------------------------------------------------------------------------
+
+	//company methods
+	
 	/**
 	 * 
 	 * @return company gets the Company Participant works for
@@ -125,4 +150,5 @@ public class Participant {
 	public void setCompany(Company company) {
 		this.company = company;
 	}
+	//-----------------------------------------------------------------------------------------
 }

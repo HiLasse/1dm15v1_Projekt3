@@ -29,7 +29,7 @@ public class Service {
 	}
 	//-----------------------------------------------------------------------------------------
 
-	//Participent methods
+	//Participant methods
 	
 	public static Participant createParticipant(String name, String address, int telephone, String email) {
 		Participant participant = new Participant(name, address, telephone, email);
@@ -72,8 +72,8 @@ public class Service {
 	
 	//Conference methods
 	
-	public static Conference createConference(String name, String address, LocalDateTime startTime, LocalDateTime endTime) {
-		Conference conference = new Conference(name, address, startTime, endTime);
+	public static Conference createConference(String name, String address, LocalDateTime startTime, LocalDateTime endTime, double price) {
+		Conference conference = new Conference(name, address, startTime, endTime, price);
 		Storage.addConference(conference);
 		return conference;
 	}

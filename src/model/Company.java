@@ -9,6 +9,9 @@ package model;
  *
  */
 public class Company {
+
+	//Fields
+	
 	/**
 	 * Name of Company
 	 */
@@ -23,7 +26,10 @@ public class Company {
 	 * Telephone number of Company
 	 */
 	private int telephone;
-	
+
+	//-----------------------------------------------------------------------------------------
+
+	//constructor
 	
 	/**
 	 * @param name is the name of the company
@@ -35,6 +41,11 @@ public class Company {
 		this.address = address;
 		this.telephone = telephone;		
 	}
+	
+	//-----------------------------------------------------------------------------------------
+
+	//name methods
+	
 	/**
 	 * 
 	 * @return name of Company
@@ -49,6 +60,10 @@ public class Company {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	//-----------------------------------------------------------------------------------------
+
+	//address methods
 	
 	/**
 	 * 
@@ -65,6 +80,10 @@ public class Company {
 		this.address = address;
 	}
 	
+	//-----------------------------------------------------------------------------------------
+
+	//telephone methods
+	
 	/**
 	 * 
 	 * @return telephone number of Company
@@ -80,4 +99,6 @@ public class Company {
 	public void setTelephone(int telephone) {
 		this.telephone = telephone;
 	}
+	//-----------------------------------------------------------------------------------------
+
 }

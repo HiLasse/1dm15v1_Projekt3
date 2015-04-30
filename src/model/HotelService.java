@@ -6,6 +6,8 @@ package model;
  *
  */
 public class HotelService {
+
+	//Fields
 	
 	/**
 	 * name of HotelService
@@ -15,6 +17,10 @@ public class HotelService {
 	 * price of HotelService
 	 */
 	private double price;
+
+	//-----------------------------------------------------------------------------------------
+
+	//Constructor
 	
 	/**
 	 * Creates a HotelService
@@ -26,7 +32,11 @@ public class HotelService {
 		this.name = name;
 		this.price = price;
 	}
+	
+	//-----------------------------------------------------------------------------------------
 
+	//name methods
+	
 	/**
 	 * @return the name of the HotelService
 	 */
@@ -41,6 +51,10 @@ public class HotelService {
 		this.name = name;
 	}
 
+	//-----------------------------------------------------------------------------------------
+
+	//price methods
+	
 	/**
 	 * @return the price of the HotelService
 	 */
@@ -54,5 +68,5 @@ public class HotelService {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	
+	//-----------------------------------------------------------------------------------------
 }

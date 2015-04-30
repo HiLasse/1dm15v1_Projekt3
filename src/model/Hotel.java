@@ -7,6 +7,7 @@ import java.util.ArrayList;
  */
 public class Hotel 
 {	
+	//Fields
 	/**
 	 * name of Hotel
 	 */
@@ -22,7 +23,10 @@ public class Hotel
 	 *  link to Ekstraydelser class (--> 0..*)
 	 */
 	private ArrayList<HotelService> hotelServices  = new ArrayList<HotelService>();
-//github.com/HiLasse/1dm15v1_Projekt3.git
+
+	//-----------------------------------------------------------------------------------------
+
+	//Constructor
 	/**
 	 * Constructs a Hotel with name and price
 	 * @param name of Hotel
@@ -33,7 +37,9 @@ public class Hotel
 		this.name = name;
 		this.pricePrDay = pricePrDay;
 	}
+	//-----------------------------------------------------------------------------------------
 
+	// Work in Progress
 	/**
 	 * Calculates total price of a stay in a Hotel for a given Registration including added HotelService
 	 * @return servicePrice
@@ -49,6 +55,10 @@ public class Hotel
 		return servicePrice;
 	}
 
+	//-----------------------------------------------------------------------------------------
+
+	//name methods
+	
 	/**
 	 * 
 	 * @return name of Hotel
@@ -65,6 +75,10 @@ public class Hotel
 		this.name = name;
 	}
 
+	//-----------------------------------------------------------------------------------------
+
+	//pricePrDay methods
+	
 	/**
 	 * Base cost of a room in a Hotel
 	 * @return pricePrDay
@@ -81,6 +95,10 @@ public class Hotel
 		this.pricePrDay = pricePrDay;
 	}
 
+	//-----------------------------------------------------------------------------------------
+
+	//HotelServices methods
+	
 	/**
 	 * Returns an ArrayList of hotelServies of a given Hotel
 	 * @return hotelServices
@@ -88,5 +106,20 @@ public class Hotel
 	public ArrayList<HotelService> getHotelServices() {
 		return hotelServices;
 	}
-
+	
+	/**
+	 * @param hotelService adds HotelService object to hotelService ArrayList
+	 */
+	public void addHotelServices(HotelService hotelService) {
+		this.hotelServices.add(hotelService);
+	}
+	
+	/**
+	 * Removes specified HotelService object for hotelService ArrayList
+	 * @param hotelService to be removed
+	 */
+	public void removeHotelServices(HotelService hotelService){
+		this.hotelServices.remove(hotelService);
+	}
+	//-----------------------------------------------------------------------------------------
 }

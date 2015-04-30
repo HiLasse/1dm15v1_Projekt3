@@ -10,6 +10,7 @@ import java.util.ArrayList;
  */
 public class Excursion {
 
+	//Fields
 	/**
 	 * name of an Excursion
 	 */
@@ -31,6 +32,10 @@ public class Excursion {
 	 */
 	private ArrayList<Companion> companions = new ArrayList<Companion>();
 
+	//-----------------------------------------------------------------------------------------
+
+	//Constructor
+	
 	/**
 	 * Constructs an Excursion
 	 * @param name of Excursion
@@ -42,31 +47,47 @@ public class Excursion {
 		this.price = price;
 		this.date = date;
 	}
+	
+	//-----------------------------------------------------------------------------------------
 
+	//name methods
+	
 	/**
 	 * @return the name of Excursion
 	 */
 	public String getName() {
 		return name;
 	}
+	
 	/**
 	 * @param name , set the name of Excursion
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	//-----------------------------------------------------------------------------------------
+
+	//price methods
+	
 	/**
 	 * @return the price of Excursion per person
 	 */
 	public double getPrice() {
 		return price;
 	}
+	
 	/**
 	 * @param price , set the price  of Excursion per person
 	 */
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	
+	//-----------------------------------------------------------------------------------------
+
+	//price methods
+	
 	/**
 	 * @return the date of Excursion
 	 */
@@ -80,6 +101,10 @@ public class Excursion {
 		this.date = date;
 	}
 
+	//-----------------------------------------------------------------------------------------
+
+	//Companion methods
+	
 	/**
 	 * Returns an ArrayList of Companions on an Excursion
 	 * @return companions ArrayList
@@ -88,5 +113,22 @@ public class Excursion {
 		return companions;
 	}
 	
+	
+	/**
+	 * @param companion adds Companion object to companions ArrayList
+	 */
+	public void addCompanion(Companion companion) {
+		this.companions.add(companion);
+	}
+	
+	/**
+	 * Removes specified Companion object for companions ArrayList
+	 * @param companion to be removed
+	 */
+	public void removeCompanion(Companion companion){
+		this.companions.remove(companion);
+	}
+	//-----------------------------------------------------------------------------------------
+	//-----------------------------------------------------------------------------------------
 
 }

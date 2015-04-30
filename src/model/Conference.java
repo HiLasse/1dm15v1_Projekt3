@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Conference {
-
+	//Fields
 	/**
 	 * name of Conference
 	 */
@@ -45,6 +45,10 @@ public class Conference {
 	 */
 	private double price;
 	
+	//-----------------------------------------------------------------------------------------
+
+	//Constructor
+	
 	/**
 	 * Constructs a Conference object
 	 * @param name of Conference
@@ -60,6 +64,10 @@ public class Conference {
 		this.price = price;
 	}
 
+	//-----------------------------------------------------------------------------------------
+
+	//price methods
+	
 	/**
 	 * @return the price of Conference per day per Participant
 	 */
@@ -74,6 +82,10 @@ public class Conference {
 		this.price = price;
 	}
 
+	//-----------------------------------------------------------------------------------------
+
+	//name methods
+	
 	/**
 	 * @return the name of the Conference
 	 */
@@ -88,6 +100,10 @@ public class Conference {
 		this.name = name;
 	}
 
+	//-----------------------------------------------------------------------------------------
+
+	//address methods
+	
 	/**
 	 * @return the address of the Conference
 	 */
@@ -101,7 +117,11 @@ public class Conference {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	
+	//-----------------------------------------------------------------------------------------
 
+	//startTime methods
+	
 	/**
 	 * @return the startTime of the Conference
 	 */
@@ -115,7 +135,11 @@ public class Conference {
 	public void setStartTime(LocalDateTime startTime) {
 		this.startTime = startTime;
 	}
+	
+	//-----------------------------------------------------------------------------------------
 
+	//endTime methods
+	
 	/**
 	 * @return the endTime of the Conference
 	 */
@@ -130,6 +154,10 @@ public class Conference {
 		this.endTime = endTime;
 	}
 
+	//-----------------------------------------------------------------------------------------
+
+	//participans methods
+	
 	/**
 	 * @return the participants ArrayList of the Conference
 	 */
@@ -151,6 +179,10 @@ public class Conference {
 		this.participants.remove(participant);
 	}
 
+	//-----------------------------------------------------------------------------------------
+
+	//excurtions methods
+	
 	/**
 	 * @return the excursions ArrayList of the Conference
 	 */
@@ -172,6 +204,10 @@ public class Conference {
 		this.excursions.remove(excursion);
 	}
 
+	//-----------------------------------------------------------------------------------------
+
+	//hotels methods
+	
 	/**
 	 * @return the hotels ArrayList of the Conference
 	 */
@@ -192,5 +228,7 @@ public class Conference {
 	public void removeHotel(Hotel hotel){
 		this.hotels.remove(hotel);
 	}
+	
+	//-----------------------------------------------------------------------------------------
 
 }
