@@ -136,7 +136,7 @@ public class Conference {
 	/**
 	 * @return the participants ArrayList of the Conference
 	 */
-	public ArrayList<Participant> getParticipants() {
+	public ArrayList<Participant> getParticipantsArray() {
 		return participants;
 	}
 
@@ -144,108 +144,56 @@ public class Conference {
 	 * @param participant adds Participant object to participants ArrayList
 	 */
 	public void addParticipant(Participant participant) {
-		participants.add(participant);
+		this.participants.add(participant);
 	}
 	/**
 	 * Removes specified Participant object for participants ArrayList
 	 * @param participant to be removed
 	 */
 	public void removeParticipant(Participant participant){
-		participants.remove(participant);
+		this.participants.remove(participant);
 	}
 
 	/**
-	 * Searches the participants ArrayList for an object with a string matching the name
-	 * IF NONE FOUND RETURNS NULL
-	 * DOES NOT FIND DUPLICATES
-	 * @param name the name String of Participant object
-	 * @return Participant object matching string or NULL if none found
+	 * @return the excursions ArrayList of the Conference
 	 */
-	public Participant findParticipant(String name){
-		Participant tempoary = null; 
-		for(int i = 0; i < this.participants.size(); i++){
-			if (this.participants.get(i).getName() == name){
-				tempoary = this.participants.get(i);
-				break;
-			}
-			else{
-				tempoary = null;
-			}
-
-		}
-		return tempoary;
+	public ArrayList<Excursion> getExcursionsArray() {
+		return excursions;
 	}
-
+	
 	/**
-	 * @param participant adds Excursion object to excursions ArrayList
+	 * @param excursion adds Excursion object to excursions ArrayList
 	 */
 	public void addExcursion(Excursion excursion) {
-		excursions.add(excursion);
+		this.excursions.add(excursion);
 	}
 	/**
 	 * Removes specified Excursion object for participants ArrayList
 	 * @param excursion to be removed
 	 */
 	public void removeExcursion(Participant excursion){
-		excursions.remove(excursion);
+		this.excursions.remove(excursion);
 	}
 
 	/**
-	 * Searches the excursions ArrayList for an object with a string matching the name
-	 * IF NONE FOUND RETURNS NULL
-	 * DOES NOT FIND DUPLICATES
-	 * @param name the name String of Excursion object
-	 * @return Excursion object matching string or NULL if none found
+	 * @return the hotels ArrayList of the Conference
 	 */
-	public Excursion findExcursion(String name){
-		Excursion tempoary = null; 
-		for(int i = 0; i < this.excursions.size(); i++){
-			if (this.excursions.get(i).getName() == name){
-				tempoary = this.excursions.get(i);
-				break;
-			}
-			else{
-				tempoary = null;
-			}
-
-		}
-		return tempoary;
+	public ArrayList<Hotel> getHotelsArray() {
+		return hotels;
 	}
-
+	
 	/**
 	 * @param hotel adds Hotel object to hotels ArrayList
 	 */
 	public void addHotel(Hotel hotel) {
-		hotels.add(hotel);
+		this.hotels.add(hotel);
 	}
 	/**
 	 * Removes specified Hotel object for hotels ArrayList
 	 * @param hotel to be removed
 	 */
 	public void removeParticipant(Hotel hotel){
-		hotels.remove(hotel);
-	}
-
-	/**
-	 * Searches the hotels ArrayList for an object with a string matching the name
-	 * IF NONE FOUND RETURNS NULL
-	 * DOES NOT FIND DUPLICATES
-	 * @param name the name String of Hotel object
-	 * @return Hotel object matching string or NULL if none found
-	 */
-	public Hotel findHotel(String name){
-		Hotel tempoary = null; 
-		for(int i = 0; i < this.hotels.size(); i++){
-			if (this.hotels.get(i).getName() == name){
-				tempoary = this.hotels.get(i);
-				break;
-			}
-			else{
-				tempoary = null;
-			}
-
-		}
-		return tempoary;
+		this.hotels.remove(hotel);
 	}
 
 }
