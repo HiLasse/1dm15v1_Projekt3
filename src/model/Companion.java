@@ -1,6 +1,6 @@
 package model;
 /**
- * A person accompanying a Participant
+ * A person accompanying a Participant through a Registration
  * @author Lasse
  * 
  */

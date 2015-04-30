@@ -28,17 +28,17 @@ public class Conference {
 	/**
 	 * participants of Conference
 	 */
-	private ArrayList<Participant> participants;
+	private ArrayList<Participant> participants = new ArrayList<Participant>();;
 
 	/**
 	 * excurtions during Conference
 	 */
-	private ArrayList<Excursion> excursions;
+	private ArrayList<Excursion> excursions = new ArrayList<Excursion>();;
 
 	/**
 	 * hotels available for Participant during a Conference
 	 */
-	private ArrayList<Hotel> hotels;
+	private ArrayList<Hotel> hotels = new ArrayList<Hotel>();;
 
 	/**
 	 * price of Conference per day per Participant
@@ -46,7 +46,7 @@ public class Conference {
 	private double price;
 	
 	/**
-	 * Constructs a Conference object it initializes the ArrayLists participants, excursions and hotels, but sets them to NULL
+	 * Constructs a Conference object
 	 * @param name of Conference
 	 * @param address of Conference
 	 * @param startTime of Conference
@@ -58,9 +58,6 @@ public class Conference {
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.price = price;
-		this.participants = null;
-		this.excursions = null;
-		this.hotels = null;
 	}
 
 	/**
@@ -192,7 +189,7 @@ public class Conference {
 	 * Removes specified Hotel object for hotels ArrayList
 	 * @param hotel to be removed
 	 */
-	public void removeParticipant(Hotel hotel){
+	public void removeHotel(Hotel hotel){
 		this.hotels.remove(hotel);
 	}
 

@@ -1,29 +1,29 @@
 package model;
 
 /**
- * A person with name, address, tel and email
+ * A Participant with name, address, tel and email
  * Must be linked with the company class
  * and can be linked with attendance class
  */
 public class Participant {
 	/**
-	 * First and last name of person
+	 * First and last name of Participant
 	 */
 	private String name;
 
 	/**
-	 * Full address of person
+	 * Full address of Participant
 	 */
 	private String address;
 
 	/**
-	 * Telephone number of person
+	 * Telephone number of Participant
 	 */
 
 	private int telephone;
 
 	/**
-	 * e-mail address of person
+	 * e-mail address of Participant
 	 */
 	private String email;
 
@@ -32,7 +32,13 @@ public class Participant {
 	 */
 	private Company company;
 
-
+	/**
+	 * Constructs a Participant
+	 * @param name of Participant
+	 * @param address of Participant
+	 * @param telephone of Participant
+	 * @param email of Participant
+	 */
 	public Participant(String name, String address, int telephone, String email){
 		this.name = name;
 		this.address = address;
@@ -41,7 +47,7 @@ public class Participant {
 	}
 
 	/**
-	 * Get the name of person
+	 * Get the name of Participant
 	 * @return the persons name
 	 */
 	public String getName() {
@@ -49,7 +55,7 @@ public class Participant {
 	}
 
 	/**
-	 * Change the name of person
+	 * Change the name of Participant
 	 * @param name is set to the String name
 	 */
 	public void setName(String name) {
@@ -57,15 +63,15 @@ public class Participant {
 	}
 
 	/**
-	 * Get the address of person
-	 * @return the address of person
+	 * Get the address of Participant
+	 * @return the address of Participant
 	 */
 	public String getAddress() {
 		return address;
 	}
 
 	/**
-	 * Get the address of person
+	 * Get the address of Participant
 	 * @param address is set to address string
 	 */
 	public void setAddress(String address) {
@@ -73,7 +79,7 @@ public class Participant {
 	}
 
 	/**
-	 * Get the telephone number of person
+	 * Get the telephone number of Participant
 	 * @return the persons telephone number
 	 */
 	public int getTelephone() {
@@ -81,7 +87,7 @@ public class Participant {
 	}
 
 	/**
-	 * Change telephone number of person
+	 * Change telephone number of Participant
 	 * @param telephone sets the telephone number
 	 */
 	public void setTelephone(int telephone) {
@@ -89,7 +95,7 @@ public class Participant {
 	}
 
 	/**
-	 * Gets the email addres of person
+	 * Gets the email addres of Participant
 	 * @return the persons email
 	 */
 	public String getEmail() {
@@ -97,17 +103,25 @@ public class Participant {
 	}
 
 	/**
-	 * Change the email address of person
+	 * Change the email address of Participant
 	 * @param email the sets email address
 	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+	/**
+	 * 
+	 * @return company gets the Company Participant works for
+	 */
 	public Company getCompany() {
 		return company;
 	}
 
+	/**
+	 * 
+	 * @param company sets the Company Participant works for
+	 */
 	public void setCompany(Company company) {
 		this.company = company;
 	}

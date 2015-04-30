@@ -1,7 +1,7 @@
 package model;
 /**
- * HotelService a Participant an buy in excess of a room
- * (contains only ONE service
+ * HotelService is something a Registration (Participant) can buy in excess of a room
+ * (contains only ONE service)
  * @author Lasse
  *
  */

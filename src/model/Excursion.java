@@ -25,8 +25,11 @@ public class Excursion {
 	 */
 	private LocalDateTime date;
 
-	// Link to Companion class(-->0..*)
-	private ArrayList<Companion> companions = new ArrayList<>();
+	/**
+	 * List of Companion who are on an Excursion.
+	 * Link to Companion class(-->0..*)
+	 */
+	private ArrayList<Companion> companions = new ArrayList<Companion>();
 
 	/**
 	 * Constructs an Excursion
@@ -77,6 +80,10 @@ public class Excursion {
 		this.date = date;
 	}
 
+	/**
+	 * Returns an ArrayList of Companions on an Excursion
+	 * @return companions ArrayList
+	 */
 	public ArrayList<Companion> getCompanions() {
 		return companions;
 	}
