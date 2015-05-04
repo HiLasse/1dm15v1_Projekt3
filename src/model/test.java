@@ -14,6 +14,21 @@ import java.time.LocalDateTime;
 //TEST KLASSE, SKAL SLETTES INDEN AFLEVERING
 //TEST KLASSE, SKAL SLETTES INDEN AFLEVERING
 
+
+/*
+ * TODO
+ * Service:
+ * 
+ * (link == update, create, remove)
+ * 
+ * link companion to participant
+ * link hotel to conference
+ * link companion to excursions
+ * link hotel services to hotel
+ * link excursions to conference
+ * 
+ * se evt 17. april opgaver, service
+ */
 public class test {
 
 	public static void main(String[] args) 
