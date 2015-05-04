@@ -31,8 +31,8 @@ public class Service {
 
 	//Participant methods
 
-	public static Participant createParticipant(String name, String address, int telephone, String email) {
-		Participant participant = new Participant(name, address, telephone, email);
+	public static Participant createParticipant(String name, String address, int telephone, String email, boolean lecture) {
+		Participant participant = new Participant(name, address, telephone, email, lecture);
 		Storage.addParticipent(participant);
 		return participant;
 	}
