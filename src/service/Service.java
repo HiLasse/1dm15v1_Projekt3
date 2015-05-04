@@ -69,7 +69,21 @@ public class Service {
 	public static void deleteHotel(Hotel hotel) {
 		Storage.removeHotel(hotel);
 	}
-
+	
+	//----------------------------------------------------------------------------
+	
+	//Hotel Service methods
+	
+	public static HotelService createHotelService(String name, double price)
+	{
+		HotelService hotelservice = new HotelService(name,price);
+		return hotelservice;
+	}
+	
+	public static void updateHotelService(HotelService hotelService, String name, double price) {
+		hotelService.setName(name);
+		hotelService.setPrice(price);
+	}
 
 	//-----------------------------------------------------------------------------------------
 
@@ -96,7 +110,8 @@ public class Service {
 
 	//Registration methods
 
-	public static Registration createRegistration(Conference conference, Participant participant, LocalDate arrivalDate,LocalDate departureDate) {
+	public static Registration createRegistration(Conference conference, Participant participant, LocalDate arrivalDate,LocalDate departureDate) 
+	{
 		return conference.createRegistration(conference, participant, arrivalDate, departureDate);
 	}
 	
@@ -143,22 +158,12 @@ public class Service {
 	{
 		conference.removeHotel(hotel);
 	}
-//	public static ArrayList<Hotel> removeHotelOfConference(Hotel hotel, Conference conference)
-//	{
-//		conference.removeHotel(hotel);
-//		return new ArrayList<Hotel>();
-//	}
 	
 	//add Hotel to Conference
 	public static void addHotelOfConference(Hotel hotel, Conference conference)
 	{
 		conference.addHotel(hotel);
 	}
-//	public static ArrayList<Hotel> addHotelOfConference(Hotel hotel, Conference conference)
-//	{
-//		conference.addHotel(hotel);
-//		return new ArrayList<Hotel>();
-//	}
 
 	//----------------------------HotelService link methods
 	//add HotelService to Hotel
@@ -204,5 +209,28 @@ public class Service {
 		}
 	}
 	
+	//----------------------------------------------------------------------
+	/**
+	 * Initializes the storage with some objects.
+	 */
+	public static void initStorage() 
+	{
+		Participant p1 = Service.createParticipant("Dennis", "Vej21", 9876543, "lol@gmail.nu", false);
+		Participant p2 = Service.createParticipant("Dennissss", "Vej2221", 98276543, "lo123l@gmail.nu", true);
+		
+		//Companion c1 = Service.createCompanion("Lars Allan for fanden");
+		
+		Conference co1 = Service.createConference("Bæver konf", "her", LocalDate.of(2001, 2, 17), LocalDate.of(2001, 2, 20), 1000);
+		
+		Hotel h1 = Service.createHotel("Hotel fint", 200);
+//		HotelService hs1 = Service.createHotelService("Morgenmad", 100);
+//		HotelService hs2 = Service.createHotelService("Swimming Pool access", 200);
+		
+//		Excursion e1 = Service.createExcursion("Hyggetur til irma", 100, LocalDate.now());
+		
+		Registration r1 = Service.createRegistration(co1, p1, co1.getStartTime(), co1.getEndTime());
+		Service.setHotel(h1); // 200 * 3
+		
+	}
 	
 }
