@@ -44,7 +44,7 @@ public class Registration
 			//Hotel service priser
 			for (HotelService x: hotelServices)
 			{
-				totalPrice += x.getPrice();
+				totalPrice += x.getPrice()*days();
 			}
 
 			// Antal dage på hotel 
@@ -54,11 +54,14 @@ public class Registration
 		totalPrice += conference.getPrice();
 
 		// Udflugt pris
-		for (Excursion excursion : excursions) 
+		if(companion != null)
 		{
-			totalPrice += excursion.getPrice();
+			for (Excursion excursion : excursions) 
+			{
+				totalPrice += excursion.getPrice();
+			}
 		}
-		
+
 		if( participant.isLecture())
 		{
 			totalPrice = 0;
@@ -69,61 +72,72 @@ public class Registration
 
 
 
-/**
- * @return days for the registration
- */
-private long days()
-{
-	return ChronoUnit.DAYS.between(arrivalDate, departureDate);
-}
+	/**
+	 * @return days for the registration
+	 */
+	private long days()
+	{
+		return ChronoUnit.DAYS.between(arrivalDate, departureDate);
+	}
 
 
-// Getters and setters
-public Companion getCompanion() {
-	return companion;
-}
+	// Getters and setters
+	public Companion getCompanion() {
+		return companion;
+	}
 
-public void setCompanion(Companion companion) {
-	this.companion = companion;
-}
+	public void setCompanion(Companion companion) {
+		this.companion = companion;
+	}
 
-public Hotel getHotel() {
-	return hotel;
-}
+	public Hotel getHotel() {
+		return hotel;
+	}
 
-public void setHotel(Hotel hotel) {
-	this.hotel = hotel;
-}
+	public void setHotel(Hotel hotel) {
+		this.hotel = hotel;
+	}
 
-public Conference getConference() {
-	return conference;
-}
+	public Conference getConference() {
+		return conference;
+	}
 
-public void setConference(Conference conference) {
-	this.conference = conference;
-}
+	public void setConference(Conference conference) {
+		this.conference = conference;
+	}
 
-public ArrayList<Excursion> getExcursions() {
-	return excursions;
-}
+	public ArrayList<Excursion> getExcursions() {
+		return excursions;
+	}
+	
+	public void addExcursion(Excursion excursion)
+	{
+		this.excursions.add(excursion);
+	}
 
-public LocalDate getArrivalDate() {
-	return arrivalDate;
-}
+	public LocalDate getArrivalDate() {
+		return arrivalDate;
+	}
 
-public void setArrivalDate(LocalDate arrivalDate) {
-	this.arrivalDate = arrivalDate;
-}
+	public void setArrivalDate(LocalDate arrivalDate) {
+		this.arrivalDate = arrivalDate;
+	}
 
-public LocalDate getDepartureDate() {
-	return departureDate;
-}
+	public LocalDate getDepartureDate() {
+		return departureDate;
+	}
 
-public void setDepartureDate(LocalDate departureDate) {
-	this.departureDate = departureDate;
-}
+	public void setDepartureDate(LocalDate departureDate) {
+		this.departureDate = departureDate;
+	}
 
+	public ArrayList<HotelService> getHotelServices() {
+		return hotelServices;
+	}
 
+	public void addHotelServices(HotelService hotelService) {
+		this.hotelServices.add(hotelService);
+	}
 
 
 }
