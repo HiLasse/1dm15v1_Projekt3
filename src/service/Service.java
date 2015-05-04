@@ -127,6 +127,15 @@ public class Service {
 		excursion.removeCompanion(companion);
 	}
 	
+	// Removes all companions from excursion
+	public static void clearCompanionsOfExcursion(Excursion excursion)
+	{
+		for (Companion x: excursion.getCompanions())
+		{
+			excursion.removeCompanion(x);
+		}
+	}
+	
 	
 	//----------------------------Hotel link methods
 	//remove
