@@ -1,4 +1,4 @@
-package model;
+	package model;
 
 import java.util.ArrayList;
 /**
@@ -44,14 +44,13 @@ public class Hotel
 	 * Calculates total price of a stay in a Hotel for a given Registration including added HotelService
 	 * @return servicePrice
 	 */
-	public double calcPrice()
+	public double calcHotelServicePrice()
 	{
 		double servicePrice = 0;
 		for (HotelService x: hotelServices)
 		{
 			servicePrice += x.getPrice();
 		}
-		//TODO: Find ud af hvor det skal beregnes
 		return servicePrice;
 	}
 

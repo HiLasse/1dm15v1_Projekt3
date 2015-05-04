@@ -231,4 +231,8 @@ public class Conference {
 	
 	//-----------------------------------------------------------------------------------------
 
+	public Registration createRegistration (Conference conference, Participant participant, LocalDateTime arrivalDate,LocalDateTime departureDate) {
+		Registration registration = new Registration(conference, participant, arrivalDate, departureDate);
+		return registration;
+	}
 }
