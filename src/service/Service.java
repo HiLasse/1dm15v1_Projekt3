@@ -273,12 +273,6 @@ public class Service {
 		Service.setHotelToRegistration(r2, h1);
 		Service.updateCompanionOfParticipant(c1, p1);
 		Service.addCompanionToExcursion(c1, e1);
-		
-		
-		
-		
-		
-		
 
 	}
 
