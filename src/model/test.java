@@ -20,9 +20,9 @@ import java.time.LocalDate;
  * 
  * (link == update, create, remove)
  * 
- * link companion to participant
- * link hotel to conference
+ * link companion to participant ---- Done
  * link companion to excursions
+ * link hotel to conference ---- Done
  * link hotel services to hotel
  * link excursions to conference
  * 

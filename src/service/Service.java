@@ -1,9 +1,12 @@
 package service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
+import model.Companion;
 import model.Company;
 import model.Conference;
+import model.Excursion;
 import model.Hotel;
 import model.Participant;
 import model.Registration;
@@ -96,5 +99,50 @@ public class Service {
 	public static Registration createRegistration(Conference conference, Participant participant, LocalDate arrivalDate,LocalDate departureDate) {
 		return conference.createRegistration(conference, participant, arrivalDate, departureDate);
 	}
+	
+	//----------------------------------------------------------------------------------------
 
+	//---------------------------Companion link methods
+	//Update Companion to Participant
+	public static void updateCompanionOfParticipant(Companion companion, Participant participant)
+	{
+		participant.setCompanion(companion);
+	}
+	
+	//Remove Companion from Participant
+	public static void removeCompanionOfParticipant(Companion companion, Participant participant)
+	{
+		participant.setCompanion(null);
+	}
+	
+	// Add Companion to excursion
+	public static void addCompanionToExcursion(Companion companion, Excursion excursion)
+	{
+		excursion.addCompanion(companion);
+	}
+	
+	// Remove Companion from excursion
+	public static void removeCompanionToExcursion(Companion companion, Excursion excursion)
+	{
+		excursion.removeCompanion(companion);
+	}
+	
+	
+	//----------------------------Hotel link methods
+	//remove
+	public static ArrayList<Hotel> removeHotelOfConference(Hotel hotel, Conference conference)
+	{
+		conference.removeHotel(hotel);
+		return new ArrayList<Hotel>();
+	}
+	//add
+	public static ArrayList<Hotel> addHotelOfConference(Hotel hotel, Conference conference)
+	{
+		conference.addHotel(hotel);
+		return new ArrayList<Hotel>();
+	}
+	
+	
+	
+	
 }

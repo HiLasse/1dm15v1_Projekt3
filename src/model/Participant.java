@@ -34,6 +34,8 @@ public class Participant {
 	private Company company;
 	
 	private boolean lecture;
+	
+	private Companion companion;
 
 	//-----------------------------------------------------------------------------------------
 
@@ -161,6 +163,16 @@ public class Participant {
 	
 	public boolean isLecture() {
 		return lecture;
+	}
+	
+	public void setCompanion(Companion companion)
+	{
+		this.companion = companion;
+	}
+	
+	public Companion getCompanion()
+	{
+		return companion;
 	}
 	
 }
