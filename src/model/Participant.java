@@ -32,6 +32,8 @@ public class Participant {
 	 * Company person works for (company class)
 	 */
 	private Company company;
+	
+	private boolean lecture;
 
 	//-----------------------------------------------------------------------------------------
 
@@ -44,11 +46,12 @@ public class Participant {
 	 * @param telephone of Participant
 	 * @param email of Participant
 	 */
-	public Participant(String name, String address, int telephone, String email){
+	public Participant(String name, String address, int telephone, String email, boolean lecture){
 		this.name = name;
 		this.address = address;
 		this.telephone = telephone;
 		this.email = email;
+		this.lecture = lecture;
 	}
 
 	//-----------------------------------------------------------------------------------------
@@ -151,4 +154,9 @@ public class Participant {
 		this.company = company;
 	}
 	//-----------------------------------------------------------------------------------------
+	
+	public void setLecture(boolean lecture) {
+		this.lecture = lecture;
+	}
+	
 }
