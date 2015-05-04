@@ -12,6 +12,7 @@ public class Registration
 	private Hotel hotel;
 	private Conference conference;
 	private ArrayList<Excursion> excursions = new ArrayList<>();
+	private ArrayList<HotelService> hotelServices = new ArrayList<>();
 	private LocalDateTime arrivalDate;
 	private LocalDateTime departureDate;
 	
@@ -31,12 +32,32 @@ public class Registration
 		this.companion = companion;
 	}
 	
-	public double calcPrice()
+	
+	// beregner pris for alt (service, hotel, konference)
+	public double calcTotalPrice()
 	{
 		double totalPrice = 0;
 		if (hotel != null)
 		{
-			totalPrice = (hotel.calcPrice()+hotel.getpricePrDay())*days();
+			//Hotel service priser
+			for (HotelService x: hotelServices)
+			{
+				totalPrice += x.getPrice();
+			}
+			
+			// Antal dage på hotel 
+			totalPrice += hotel.getPricePrDay()*days();
+			
+			// Konference pris
+			totalPrice += conference.getPrice();
+			
+			// Udflugt pris
+			for (Excursion excursion : excursions) 
+			{
+				totalPrice += excursion.getPrice();
+			}
+			
+			//TODO: Checkup
 		}
 		return totalPrice;
 	}
@@ -78,10 +99,6 @@ public class Registration
 
 	public ArrayList<Excursion> getExcursions() {
 		return excursions;
-	}
-
-	public void setExcursions(ArrayList<Excursion> excursions) {
-		this.excursions = excursions;
 	}
 
 	public LocalDateTime getArrivalDate() {
