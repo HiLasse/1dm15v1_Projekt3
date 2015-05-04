@@ -72,8 +72,8 @@ public class Service {
 	
 	//Conference methods
 	
-	public static Conference createConference(String name, String address, LocalDateTime startTime, LocalDateTime endTime) {
-		Conference conference = new Conference(name, address, startTime, endTime);
+	public static Conference createConference(String name, String address, LocalDateTime startTime, LocalDateTime endTime, double price) {
+		Conference conference = new Conference(name, address, startTime, endTime, price);
 		Storage.addConference(conference);
 		return conference;
 	}
@@ -93,9 +93,19 @@ public class Service {
 	
 	//Registration methods
 	
-	public static Registration createRegistration() {
+	public static Registration createRegistration(Conference conference, Participant participant, LocalDateTime arrivalDate,LocalDateTime departureDate) {
 		//TODO: add method
-		return null;
+		Registration restration = new Registration(conference, participant, arrivalDate, departureDate); //  conference, participant, arrivaldate, departuredate
+		Storage.addRegistration(restration);
+		return restration;
+	}
+	
+	public static void updateRegistration() {
+		
+	}
+	
+	public static void removeRegistration() {
+		//TODO: add method
 	}
 	
 }
