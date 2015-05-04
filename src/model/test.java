@@ -1,7 +1,6 @@
 package model;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 
 //TEST KLASSE, SKAL SLETTES INDEN AFLEVERING
