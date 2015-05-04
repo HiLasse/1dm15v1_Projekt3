@@ -1,6 +1,6 @@
 package model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
@@ -14,10 +14,10 @@ public class Registration
 	private Conference conference;
 	private ArrayList<Excursion> excursions = new ArrayList<>();
 	private ArrayList<HotelService> hotelServices = new ArrayList<>();
-	private LocalDateTime arrivalDate;
-	private LocalDateTime departureDate;
+	private LocalDate arrivalDate;
+	private LocalDate departureDate;
 
-	public Registration(Conference conference,Participant participant, LocalDateTime arrivalDate,LocalDateTime departureDate)
+	public Registration(Conference conference,Participant participant, LocalDate arrivalDate,LocalDate departureDate)
 	{
 		this.conference = conference;
 		this.arrivalDate = arrivalDate;
@@ -26,7 +26,7 @@ public class Registration
 	}
 
 	//With companion
-	public Registration(Conference conference,Participant participant, LocalDateTime arrivalDate,LocalDateTime departureDate, Companion companion)
+	public Registration(Conference conference,Participant participant, LocalDate arrivalDate,LocalDate departureDate, Companion companion)
 	{
 		this.conference = conference;
 		this.arrivalDate = arrivalDate;
@@ -107,19 +107,19 @@ public ArrayList<Excursion> getExcursions() {
 	return excursions;
 }
 
-public LocalDateTime getArrivalDate() {
+public LocalDate getArrivalDate() {
 	return arrivalDate;
 }
 
-public void setArrivalDate(LocalDateTime arrivalDate) {
+public void setArrivalDate(LocalDate arrivalDate) {
 	this.arrivalDate = arrivalDate;
 }
 
-public LocalDateTime getDepartureDate() {
+public LocalDate getDepartureDate() {
 	return departureDate;
 }
 
-public void setDepartureDate(LocalDateTime departureDate) {
+public void setDepartureDate(LocalDate departureDate) {
 	this.departureDate = departureDate;
 }
 

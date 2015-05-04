@@ -1,6 +1,6 @@
 package model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Conference {
@@ -18,12 +18,12 @@ public class Conference {
 	/**
 	 * startTime of Conference
 	 */
-	private LocalDateTime startTime;
+	private LocalDate startTime;
 	
 	/**
 	 * endTime of Conference
 	 */
-	private LocalDateTime endTime;
+	private LocalDate endTime;
 	
 	/**
 	 * participants of Conference
@@ -56,7 +56,7 @@ public class Conference {
 	 * @param startTime of Conference
 	 * @param endTime of Conference
 	 */
-	public Conference(String name, String address, LocalDateTime startTime, LocalDateTime endTime, double price) {
+	public Conference(String name, String address, LocalDate startTime, LocalDate endTime, double price) {
 		this.name = name;
 		this.address = address;
 		this.startTime = startTime;
@@ -125,14 +125,14 @@ public class Conference {
 	/**
 	 * @return the startTime of the Conference
 	 */
-	public LocalDateTime getStartTime() {
+	public LocalDate getStartTime() {
 		return startTime;
 	}
 
 	/**
 	 * @param startTime set the startTime of the Conference
 	 */
-	public void setStartTime(LocalDateTime startTime) {
+	public void setStartTime(LocalDate startTime) {
 		this.startTime = startTime;
 	}
 	
@@ -143,14 +143,14 @@ public class Conference {
 	/**
 	 * @return the endTime of the Conference
 	 */
-	public LocalDateTime getEndTime() {
+	public LocalDate getEndTime() {
 		return endTime;
 	}
 
 	/**
 	 * @param endTime set the endTime of the Conference
 	 */
-	public void setEndTime(LocalDateTime endTime) {
+	public void setEndTime(LocalDate endTime) {
 		this.endTime = endTime;
 	}
 
@@ -231,7 +231,7 @@ public class Conference {
 	
 	//-----------------------------------------------------------------------------------------
 
-	public Registration createRegistration (Conference conference, Participant participant, LocalDateTime arrivalDate,LocalDateTime departureDate) {
+	public Registration createRegistration (Conference conference, Participant participant, LocalDate arrivalDate,LocalDate departureDate) {
 		Registration registration = new Registration(conference, participant, arrivalDate, departureDate);
 		return registration;
 	}
