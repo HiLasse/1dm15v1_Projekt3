@@ -1,29 +1,35 @@
 package model;
 
 /**
- *  * A company with name, address, tel.
- * Must be linked with the person class.
- * There is no field for person, linking is through a field in the person class
- * The company class is attached to a person. company cannot be attached to an attendance
+ *  * A Company with name, address, tel.
+ * Must be linked with the Participant class.
+ * There is no field for Participant, linking is through a field in the Participant class
+ * The Company class is attached to a person. Company cannot be attached to a Registration
  * @author Lasse
  *
  */
 public class Company {
+
+	//Fields
+	
 	/**
-	 * Name of company
+	 * Name of Company
 	 */
 	private String name;
 	
 	/**
-	 * Full address of company
+	 * Full address of Company
 	 */
 	private String address;
 	
 	/**
-	 * Telephone number of company
+	 * Telephone number of Company
 	 */
 	private int telephone;
-	
+
+	//-----------------------------------------------------------------------------------------
+
+	//constructor
 	
 	/**
 	 * @param name is the name of the company
@@ -36,27 +42,63 @@ public class Company {
 		this.telephone = telephone;		
 	}
 	
+	//-----------------------------------------------------------------------------------------
+
+	//name methods
+	
+	/**
+	 * 
+	 * @return name of Company
+	 */
 	public String getName() {
 		return name;
 	}
-	
+	/**
+	 * 
+	 * @param name sets the name of Company
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 	
+	//-----------------------------------------------------------------------------------------
+
+	//address methods
+	
+	/**
+	 * 
+	 * @return address of Company
+	 */
 	public String getAddress() {
 		return address;
 	}
-	
+	/**
+	 * 
+	 * @param address sets address of Company
+	 */
 	public void setAddress(String address) {
 		this.address = address;
 	}
 	
+	//-----------------------------------------------------------------------------------------
+
+	//telephone methods
+	
+	/**
+	 * 
+	 * @return telephone number of Company
+	 */
 	public int getTelephone() {
 		return telephone;
 	}
 	
+	/**
+	 * 
+	 * @param telephone set telephone number of Company
+	 */
 	public void setTelephone(int telephone) {
 		this.telephone = telephone;
 	}
+	//-----------------------------------------------------------------------------------------
+
 }
