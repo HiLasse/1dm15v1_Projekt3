@@ -159,4 +159,8 @@ public class Participant {
 		this.lecture = lecture;
 	}
 	
+	public boolean isLecture() {
+		return lecture;
+	}
+	
 }
