@@ -1,6 +1,6 @@
 package model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -24,7 +24,7 @@ public class Excursion {
 	/**
 	 * date of Excursion
 	 */
-	private LocalDateTime date;
+	private LocalDate date;
 
 	/**
 	 * List of Companion who are on an Excursion.
@@ -42,7 +42,7 @@ public class Excursion {
 	 * @param price of Excursion per person
 	 * @param date of Excursion
 	 */
-	public Excursion (String name, double price, LocalDateTime date){
+	public Excursion (String name, double price, LocalDate date){
 		this.name = name;
 		this.price = price;
 		this.date = date;
@@ -91,13 +91,13 @@ public class Excursion {
 	/**
 	 * @return the date of Excursion
 	 */
-	public LocalDateTime getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 	/**
 	 * @param date , set the date of Excursion
 	 */
-	public void setDate(LocalDateTime date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 

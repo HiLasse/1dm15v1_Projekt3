@@ -1,6 +1,6 @@
 package service;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import model.Company;
 import model.Conference;
@@ -31,8 +31,8 @@ public class Service {
 
 	//Participant methods
 
-	public static Participant createParticipant(String name, String address, int telephone, String email) {
-		Participant participant = new Participant(name, address, telephone, email);
+	public static Participant createParticipant(String name, String address, int telephone, String email, boolean lecture) {
+		Participant participant = new Participant(name, address, telephone, email, lecture);
 		Storage.addParticipent(participant);
 		return participant;
 	}
@@ -72,13 +72,13 @@ public class Service {
 
 	//Conference methods
 
-	public static Conference createConference(String name, String address, LocalDateTime startTime, LocalDateTime endTime, double price) {
+	public static Conference createConference(String name, String address, LocalDate startTime, LocalDate endTime, double price) {
 		Conference conference = new Conference(name, address, startTime, endTime, price);
 		Storage.addConference(conference);
 		return conference;
 	}
 
-	public static void updateConference(Conference conference, String name, String address, LocalDateTime startTime, LocalDateTime endTime) {
+	public static void updateConference(Conference conference, String name, String address, LocalDate startTime, LocalDate endTime) {
 		conference.setName(name);
 		conference.setAddress(address);
 		conference.setEndTime(endTime);
@@ -93,7 +93,7 @@ public class Service {
 
 	//Registration methods
 
-	public static Registration createRegistration(Conference conference, Participant participant, LocalDateTime arrivalDate,LocalDateTime departureDate) {
+	public static Registration createRegistration(Conference conference, Participant participant, LocalDate arrivalDate,LocalDate departureDate) {
 		return conference.createRegistration(conference, participant, arrivalDate, departureDate);
 	}
 
