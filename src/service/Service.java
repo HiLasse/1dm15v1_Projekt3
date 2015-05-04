@@ -94,7 +94,7 @@ public class Service {
 	//Registration methods
 	
 	public static Registration createRegistration() {
-		//TODO: add method
+		//something
 		return null;
 	}
 	
