@@ -15,10 +15,10 @@ public class MainApp extends Application {
         Application.launch(args);
     }
 
-    @Override
-    public void init() {
-        Service.initStorage();
-    }
+//    @Override
+//    public void init() {
+//        Service.initStorage();
+//    }
 
     @Override
     public void start(Stage stage) {
@@ -47,7 +47,7 @@ public class MainApp extends Application {
 
         ConferencePane companyPane = new ConferencePane();
         tabConference.setContent(companyPane);
-        tabConference.setOnSelectionChanged(event -> companyPane.updateControls());
+//        tabConference.setOnSelectionChanged(event -> companyPane.updateControls());
 
 //        Tab tabEmployees = new Tab("Employees");
 //        tabPane.getTabs().add(tabEmployees);

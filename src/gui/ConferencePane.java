@@ -12,15 +12,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import model.Company;
-import model.Employee;
-import service.Service;
-import storage.Storage;
 
 public class ConferencePane extends GridPane {
     private TextField txfName, txfHours;
     private TextArea txaEmps;
-    private ListView<Company> lvwCompanies;
 
     public ConferencePane() {
         this.setPadding(new Insets(20));
@@ -31,15 +26,15 @@ public class ConferencePane extends GridPane {
         Label lblComp = new Label("Companies");
         this.add(lblComp, 0, 0);
 
-        lvwCompanies = new ListView<>();
-        this.add(lvwCompanies, 0, 1, 1, 3);
-        lvwCompanies.setPrefWidth(200);
-        lvwCompanies.setPrefHeight(200);
-        lvwCompanies.getItems().setAll(Service.getCompanies());
+//        lvwCompanies = new ListView<>();
+//        this.add(lvwCompanies, 0, 1, 1, 3);
+//        lvwCompanies.setPrefWidth(200);
+//        lvwCompanies.setPrefHeight(200);
+//        lvwCompanies.getItems().setAll(Service.getConference());
 
-        ChangeListener<Company> listener =
-            (ov, oldCompny, newCompany) -> this.selectedCompanyChanged();
-        lvwCompanies.getSelectionModel().selectedItemProperty().addListener(listener);
+//        ChangeListener<Company> listener =
+//            (ov, oldCompny, newCompany) -> this.selectedCompanyChanged();
+//        lvwCompanies.getSelectionModel().selectedItemProperty().addListener(listener);
 
         Label lblName = new Label("Name:");
         this.add(lblName, 1, 1);
@@ -73,98 +68,98 @@ public class ConferencePane extends GridPane {
 
         Button btnCreate = new Button("Create");
         hbxButtons.getChildren().add(btnCreate);
-        btnCreate.setOnAction(event -> this.createAction());
+//        btnCreate.setOnAction(event -> this.createAction());
 
         Button btnUpdate = new Button("Update");
         hbxButtons.getChildren().add(btnUpdate);
-        btnUpdate.setOnAction(event -> this.updateAction());
+//        btnUpdate.setOnAction(event -> this.updateAction());
 
         Button btnDelete = new Button("Delete");
         hbxButtons.getChildren().add(btnDelete);
-        btnDelete.setOnAction(event -> this.deleteAction());
+//        btnDelete.setOnAction(event -> this.deleteAction());
 
-        if (lvwCompanies.getItems().size() > 0) {
-            lvwCompanies.getSelectionModel().select(0);
-        }
+//        if (lvwCompanies.getItems().size() > 0) {
+//            lvwCompanies.getSelectionModel().select(0);
+//        }
     }
 
     // -------------------------------------------------------------------------
 
-    private void createAction() {
-        CompanyDialog dia = new CompanyDialog("Create Company");
-        dia.showAndWait();
-
-        // Wait for the modal dialog to close
-
-        lvwCompanies.getItems().setAll(Service.getCompanies());
-        int index = lvwCompanies.getItems().size() - 1;
-        lvwCompanies.getSelectionModel().select(index);
-    }
-
-    private void updateAction() {
-        Company company = lvwCompanies.getSelectionModel().getSelectedItem();
-        if (company == null)
-            return;
-
-        CompanyDialog dia = new CompanyDialog("Update Company", company);
-        dia.showAndWait();
-
-        // Wait for the modal dialog to close
-
-        int selectIndex = lvwCompanies.getSelectionModel().getSelectedIndex();
-        lvwCompanies.getItems().setAll(Service.getCompanies());
-        lvwCompanies.getSelectionModel().select(selectIndex);
-    }
-
-    private void deleteAction() {
-        Company company = lvwCompanies.getSelectionModel().getSelectedItem();
-        if (company == null)
-            return;
-
-        if (company.employeesCount() == 0) {
-            Stage owner = (Stage) this.getScene().getWindow();
-            ConfirmDialog dialog = new ConfirmDialog("Delete Company", owner);
-            dialog.initMessage("Are you sure?");
-            dialog.showAndWait();
-
-            // Wait for the modal dialog to close
-
-            if (dialog.isConfirmed()) {
-                Service.deleteCompany(company);
-                lvwCompanies.getItems().setAll(Service.getCompanies());
-                this.updateControls();
-            }
-        } else {
-            Stage owner = (Stage) this.getScene().getWindow();
-            MessageDialog dialog =
-                new MessageDialog("Delete Company", owner);
-            dialog.initMessage("Can't delete a company that has employees");
-            dialog.showAndWait();
-            // Wait for the modal dialog to close
-        }
-    }
+//    private void createAction() {
+//        CompanyDialog dia = new CompanyDialog("Create Company");
+//        dia.showAndWait();
+//
+//        // Wait for the modal dialog to close
+//
+//        lvwCompanies.getItems().setAll(Service.getCompanies());
+//        int index = lvwCompanies.getItems().size() - 1;
+//        lvwCompanies.getSelectionModel().select(index);
+//    }
+//
+//    private void updateAction() {
+//        Company company = lvwCompanies.getSelectionModel().getSelectedItem();
+//        if (company == null)
+//            return;
+//
+//        CompanyDialog dia = new CompanyDialog("Update Company", company);
+//        dia.showAndWait();
+//
+//        // Wait for the modal dialog to close
+//
+//        int selectIndex = lvwCompanies.getSelectionModel().getSelectedIndex();
+//        lvwCompanies.getItems().setAll(Service.getCompanies());
+//        lvwCompanies.getSelectionModel().select(selectIndex);
+//    }
+//
+//    private void deleteAction() {
+//        Company company = lvwCompanies.getSelectionModel().getSelectedItem();
+//        if (company == null)
+//            return;
+//
+//        if (company.employeesCount() == 0) {
+//            Stage owner = (Stage) this.getScene().getWindow();
+//            ConfirmDialog dialog = new ConfirmDialog("Delete Company", owner);
+//            dialog.initMessage("Are you sure?");
+//            dialog.showAndWait();
+//
+//            // Wait for the modal dialog to close
+//
+//            if (dialog.isConfirmed()) {
+//                Service.deleteCompany(company);
+//                lvwCompanies.getItems().setAll(Service.getCompanies());
+//                this.updateControls();
+//            }
+//        } else {
+//            Stage owner = (Stage) this.getScene().getWindow();
+//            MessageDialog dialog =
+//                new MessageDialog("Delete Company", owner);
+//            dialog.initMessage("Can't delete a company that has employees");
+//            dialog.showAndWait();
+//            // Wait for the modal dialog to close
+//        }
+//    }
 
     // -------------------------------------------------------------------------
 
-    private void selectedCompanyChanged() {
-        this.updateControls();
-    }
-
-    public void updateControls() {
-        Company company = lvwCompanies.getSelectionModel().getSelectedItem();
-        if (company != null) {
-            txfName.setText(company.getName());
-            txfHours.setText("" + company.getHours());
-            StringBuilder sb = new StringBuilder();
-            for (Employee emp : company.getEmployees()) {
-                sb.append(emp + "\n");
-            }
-            txaEmps.setText(sb.toString());
-        } else {
-            txfName.clear();
-            txfHours.clear();
-            txaEmps.clear();
-        }
-    }
+//    private void selectedCompanyChanged() {
+//        this.updateControls();
+//    }
+//
+//    public void updateControls() {
+//        Company company = lvwCompanies.getSelectionModel().getSelectedItem();
+//        if (company != null) {
+//            txfName.setText(company.getName());
+//            txfHours.setText("" + company.getHours());
+//            StringBuilder sb = new StringBuilder();
+//            for (Employee emp : company.getEmployees()) {
+//                sb.append(emp + "\n");
+//            }
+//            txaEmps.setText(sb.toString());
+//        } else {
+//            txfName.clear();
+//            txfHours.clear();
+//            txaEmps.clear();
+//        }
+//    }
 
 }
