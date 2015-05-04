@@ -1,13 +1,13 @@
 package service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 import model.Companion;
 import model.Company;
 import model.Conference;
 import model.Excursion;
 import model.Hotel;
+import model.HotelService;
 import model.Participant;
 import model.Registration;
 import storage.Storage;
@@ -130,28 +130,79 @@ public class Service {
 	// Removes all companions from excursion
 	public static void clearCompanionsOfExcursion(Excursion excursion)
 	{
-		for (Companion x: excursion.getCompanions())
+		for (Companion companion: excursion.getCompanions())
 		{
-			excursion.removeCompanion(x);
+			removeCompanionToExcursion(companion,excursion);
 		}
 	}
 	
 	
 	//----------------------------Hotel link methods
-	//remove
-	public static ArrayList<Hotel> removeHotelOfConference(Hotel hotel, Conference conference)
+	//remove Hotel from Conference
+	public static void removeHotelOfConference(Hotel hotel, Conference conference)
 	{
 		conference.removeHotel(hotel);
-		return new ArrayList<Hotel>();
 	}
-	//add
-	public static ArrayList<Hotel> addHotelOfConference(Hotel hotel, Conference conference)
+//	public static ArrayList<Hotel> removeHotelOfConference(Hotel hotel, Conference conference)
+//	{
+//		conference.removeHotel(hotel);
+//		return new ArrayList<Hotel>();
+//	}
+	
+	//add Hotel to Conference
+	public static void addHotelOfConference(Hotel hotel, Conference conference)
 	{
 		conference.addHotel(hotel);
-		return new ArrayList<Hotel>();
+	}
+//	public static ArrayList<Hotel> addHotelOfConference(Hotel hotel, Conference conference)
+//	{
+//		conference.addHotel(hotel);
+//		return new ArrayList<Hotel>();
+//	}
+
+	//----------------------------HotelService link methods
+	//add HotelService to Hotel
+	public static void addHotelServiceToHotel(Hotel hotel, HotelService hotelService)
+	{
+		hotel.addHotelServices(hotelService);
 	}
 	
+	//remove HotelService from Hotel
+	public static void removeHotelServiceToHotel(Hotel hotel, HotelService hotelService)
+	{
+		hotel.removeHotelServices(hotelService);
+	}
 	
+	//Clears hotelServices from Hotel
+	public static void clearHotelServiceToHotel(Hotel hotel)
+	{
+		for (HotelService hotelService: hotel.getHotelServices())
+		{
+			removeHotelServiceToHotel(hotel,hotelService);
+		}
+	}
+	
+	//----------------------------Excursions link methods
+	// Add Excursion to Conference
+	public static void addExcursiontoConference(Excursion excursion, Conference conference)
+	{
+		conference.addExcursion(excursion);
+	}
+	
+	// Remove Excursion from Conference
+	public static void removeExcursiontoConference(Excursion excursion, Conference conference)
+	{
+		conference.removeExcursion(excursion);
+	}
+	
+	// Clear Excursion from Conference
+	public static void clearExcursiontoConference( Conference conference)
+	{
+		for(Excursion excursion: conference.getExcursions())
+		{
+			removeExcursiontoConference(excursion,conference);
+		}
+	}
 	
 	
 }

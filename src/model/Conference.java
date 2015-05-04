@@ -28,17 +28,17 @@ public class Conference {
 	/**
 	 * participants of Conference
 	 */
-	private ArrayList<Participant> participants = new ArrayList<Participant>();;
+	private ArrayList<Participant> participants = new ArrayList<>();
 
 	/**
 	 * excurtions during Conference
 	 */
-	private ArrayList<Excursion> excursions = new ArrayList<Excursion>();;
+	private ArrayList<Excursion> excursions = new ArrayList<>();
 
 	/**
 	 * hotels available for Participant during a Conference
 	 */
-	private ArrayList<Hotel> hotels = new ArrayList<Hotel>();;
+	private ArrayList<Hotel> hotels = new ArrayList<>();
 
 	/**
 	 * price of Conference per day per Participant
@@ -186,7 +186,7 @@ public class Conference {
 	/**
 	 * @return the excursions ArrayList of the Conference
 	 */
-	public ArrayList<Excursion> getExcursionsArray() {
+	public ArrayList<Excursion> getExcursions() {
 		return excursions;
 	}
 	
@@ -200,7 +200,7 @@ public class Conference {
 	 * Removes specified Excursion object for participants ArrayList
 	 * @param excursion to be removed
 	 */
-	public void removeExcursion(Participant excursion){
+	public void removeExcursion(Excursion excursion){
 		this.excursions.remove(excursion);
 	}
 

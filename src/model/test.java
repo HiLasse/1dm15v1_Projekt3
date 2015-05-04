@@ -21,10 +21,10 @@ import java.time.LocalDate;
  * (link == update, create, remove)
  * 
  * link companion to participant ---- Done
- * link companion to excursions
+ * link companion to excursions ---- Done
  * link hotel to conference ---- Done
- * link hotel services to hotel
- * link excursions to conference
+ * link hotel services to hotel ---- Done
+ * link excursions to conference ---- Done
  * 
  * se evt 17. april opgaver, service
  */
