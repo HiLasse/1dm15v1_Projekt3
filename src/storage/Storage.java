@@ -50,7 +50,7 @@ public class Storage
 
 	//----------------------------------------------------------------
 	
-	public static ArrayList<Hotel> gethoteller() {
+	public static ArrayList<Hotel> getHotels() {
         return new ArrayList<Hotel>(hotels);
     }
 
