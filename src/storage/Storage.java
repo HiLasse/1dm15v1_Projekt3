@@ -3,16 +3,16 @@ package storage;
 import java.util.ArrayList;
 
 import model.Company;
-import model.Participant;
-import model.Hotel;
 import model.Conference;
+import model.Hotel;
+import model.Participant;
 import model.Registration;
 
 public class Storage 
 {
 	private static ArrayList<Conference> conferences = new ArrayList<>();
-	private static ArrayList<Participant> participents  = new ArrayList<>();
-	private static ArrayList<Hotel> hoteller = new ArrayList<>();
+	private static ArrayList<Participant> participants  = new ArrayList<>();
+	private static ArrayList<Hotel> hotels = new ArrayList<>();
 	private static ArrayList<Registration> registrations = new ArrayList<>();
 	private static ArrayList<Company> companies = new ArrayList<>();
 	
@@ -21,15 +21,15 @@ public class Storage
 
 	public static ArrayList<Conference> getconferences() 
 	{
-		return new ArrayList<Conference>(Conferences);
+		return new ArrayList<Conference>(conferences);
 	}
 
-	public static void addKonference(Conference conference) 
+	public static void addConference(Conference conference) 
 	{
 		conferences.add(conference);
 	}
 
-	public static void removeKonference(Conference conference) 
+	public static void removeConference(Conference conference) 
 	{
 		conferences.remove(conference);
 	}
@@ -37,29 +37,29 @@ public class Storage
 	//----------------------------------------------------------------
 
 	public static ArrayList<Participant> getParticipent() {
-		return new ArrayList<Participant>(participents);
+		return new ArrayList<Participant>(participants);
 	}
 
-	public static void addParticipent(Participant participent) {
-		participents.add(participent);
+	public static void addParticipent(Participant participant) {
+		participants.add(participant);
 	}
 
-	public static void removeParticipent(Participant participent) {
-		participents.remove(participent);
+	public static void removeParticipent(Participant participant) {
+		participants.remove(participant);
 	}
 
 	//----------------------------------------------------------------
 	
 	public static ArrayList<Hotel> gethoteller() {
-        return new ArrayList<Hotel>(hoteller);
+        return new ArrayList<Hotel>(hotels);
     }
 
     public static void addHotel(Hotel Hotel) {
-        hoteller.add(Hotel);
+        hotels.add(Hotel);
     }
 
     public static void removeHotel(Hotel Hotel) {
-        hoteller.remove(Hotel);
+        hotels.remove(Hotel);
     }
 	
 	

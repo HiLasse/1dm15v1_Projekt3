@@ -1,15 +1,21 @@
 package model;
 /**
- * A person accompanying a Participant
+ * A person accompanying a Participant through a Registration
  * @author Lasse
  * 
  */
 public class Companion 
 {
+	//Fields
+	
 	/**
 	 * Name of Companion
 	 */
 	private String name;
+
+	//-----------------------------------------------------------------------------------------
+
+	//Constructor
 	
 	/**
 	 * Constructs a Companion
@@ -20,6 +26,9 @@ public class Companion
 		this.name = name;
 	}
 	
+	//-----------------------------------------------------------------------------------------
+
+	//name methods
 	
 	/**
 	 * 
@@ -35,5 +44,7 @@ public class Companion
 	 */
 	public void setName(String name) {
 		this.name = name;
-	}	
+	}
+	
+	//-----------------------------------------------------------------------------------------
 }
