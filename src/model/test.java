@@ -25,10 +25,15 @@ public class test {
 		
 		Conference co1 = new Conference("Bæver konf", "her", LocalDate.of(2001, 2, 17), LocalDate.of(2001, 2, 20), 800);
 		
+		Hotel h1 = new Hotel("Hotel fint", 245);
+		HotelService hs1 = new HotelService("Morgenmad", 800);
+		
+		Excursion e1 = new Excursion("Hyggetur til irma", 125, LocalDate.now());
+		
 		Registration r1 = new Registration(co1, p1, co1.getStartTime(), co1.getEndTime());
 		
 		
-		
+		System.out.println(r1.calcTotalPrice());
 	}
 
 }
