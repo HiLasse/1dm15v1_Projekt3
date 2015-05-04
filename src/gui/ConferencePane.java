@@ -14,7 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class ConferencePane extends GridPane {
-	private ListView Lvwconference
+	private ListView LvwConference, ;
     }
 
     // -------------------------------------------------------------------------
