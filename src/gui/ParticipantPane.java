@@ -51,6 +51,7 @@ public class ParticipantPane extends GridPane {
         row++;
         txfAdress = new TextField();
         this.add(txfAdress, 0, row, 3, 1);
+        txfAdress.setEditable(false);
         
         row++;
         lblCountryOrCity = new Label("Country or city");
@@ -59,6 +60,7 @@ public class ParticipantPane extends GridPane {
         row++;
         txfCountryOrCity = new TextField();
         this.add(txfCountryOrCity, 0, row, 3, 1);
+        txfCountryOrCity.setEditable(false);
         
         row++;
         lblPhoneNr = new Label("Phone number");
@@ -67,6 +69,7 @@ public class ParticipantPane extends GridPane {
         row++;
         txfPhoneNr = new TextField();
         this.add(txfPhoneNr, 0, row, 3, 1);
+        txfPhoneNr.setEditable(false);
         
         row++;
         lblCompany = new Label("Company");
@@ -75,6 +78,7 @@ public class ParticipantPane extends GridPane {
         row++;
         txfCompany = new TextField();
         this.add(txfCompany, 0, row, 3, 1);
+        txfCompany.setEditable(false);
         
         row++;
         btnCreate = new Button("Create");
@@ -103,6 +107,7 @@ public class ParticipantPane extends GridPane {
         row++;
         txfTime = new TextField();
         this.add(txfTime, 3, row);
+        txfTime.setEditable(false);
         
         row++;
         lblCompanion = new Label("Companion");
@@ -111,6 +116,7 @@ public class ParticipantPane extends GridPane {
         row++;
         txfCompanion = new TextField();
         this.add(txfCompanion, 3, row);
+        txfCompanion.setEditable(false);
         
         row++;
         lblExcursion = new Label("Excursions");
@@ -130,10 +136,12 @@ public class ParticipantPane extends GridPane {
         
         txfPrice = new TextField();
         this.add(txfPrice, 5, row);
+        txfPrice.setEditable(false);
         
         row+=2;
         chbLecturer = new CheckBox("Lecturer");
         this.add(chbLecturer, 4, row, 2, 1);
+        chbLecturer.setDisable(true);
         
         row++;
         lblHotel = new Label("Hotels");
@@ -142,6 +150,7 @@ public class ParticipantPane extends GridPane {
         row++;
         txfHotel = new TextField();
         this.add(txfHotel, 4, row, 2, 1);
+        txfHotel.setEditable(false);
         
         row++;
         lblHotelService = new Label("Hotel services");

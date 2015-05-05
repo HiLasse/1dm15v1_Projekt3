@@ -46,6 +46,7 @@ public class ConferencePane extends GridPane {
         row++;
         txfPlace = new TextField();
         this.add(txfPlace, 0, row, 3, 1);
+        txfPlace.setEditable(false);
         
         row++;
         lblTime = new Label("Time");
@@ -54,6 +55,7 @@ public class ConferencePane extends GridPane {
         row++;
         txfTime = new TextField();
         this.add(txfTime, 0, row, 3, 1);
+        txfTime.setEditable(false);
         
         row++;
         lblPrice = new Label("Price");
@@ -62,6 +64,7 @@ public class ConferencePane extends GridPane {
         row++;
         txfPrice = new TextField();
         this.add(txfPrice, 0, row, 3, 1);
+        txfPrice.setEditable(false);
         
         row++;
         btnCreate = new Button("Create");
