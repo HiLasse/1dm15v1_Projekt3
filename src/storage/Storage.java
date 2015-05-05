@@ -19,7 +19,7 @@ public class Storage
 	
 	//----------------------------------------------------------------
 
-	public static ArrayList<Conference> getconferences() 
+	public static ArrayList<Conference> getConferences() 
 	{
 		return new ArrayList<Conference>(conferences);
 	}

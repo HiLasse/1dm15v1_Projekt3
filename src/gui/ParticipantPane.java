@@ -1,26 +1,26 @@
 package gui;
 
-import javax.swing.JComboBox;
+import java.util.ArrayList;
 
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
+import model.Conference;
+import model.Hotel;
+import model.Participant;
+import service.Service;
 
 public class ParticipantPane extends GridPane {
 	private ComboBox cbbConference;
 	private Label lblConference, lblParticipant, lblAddress, lblTime, lblCountryOrCity, lblPhoneNr, lblCompany, lblCompanion, lblExcursion, lblHotel, lblHotelService, lblPrice;
-	private ListView lvwParticipant, lvwExcursion, lvwHotelService;
+	private ListView  lvwExcursion, lvwHotelService;
+	private ListView<Participant> lvwParticipant;
 	private TextField txfConf, txfAdress, txfTime, txfCountryOrCity, txfPhoneNr, txfCompany, txfCompanion, txfHotel, txfPrice;
 	private CheckBox chbLecturer;
 	private Button btnCreate, btnEdit, btnDelete, btnRegister;
@@ -42,6 +42,12 @@ public class ParticipantPane extends GridPane {
         this.add(lvwParticipant, 0, row, 3, 6);
         lvwParticipant.setPrefWidth(200);
         lvwParticipant.setPrefHeight(20);
+        lvwParticipant.getItems().setAll(this.initParticipantList());
+        ChangeListener<Participant> listener =
+                (ov, oldParticipant, newParticipant) -> this.selectedParticipantChanged();
+                lvwParticipant.getSelectionModel().selectedItemProperty().addListener(listener);
+
+        
 //        lvwHotel.getItems().setAll(Service.getHotels());
         
         row+=6;
@@ -83,6 +89,7 @@ public class ParticipantPane extends GridPane {
         row++;
         btnCreate = new Button("Create");
         this.add(btnCreate, 0, row);
+        
         
         btnEdit = new Button("Edit");
         this.add(btnEdit, 1, row);
@@ -161,7 +168,100 @@ public class ParticipantPane extends GridPane {
         this.add(lvwHotelService, 4, row, 2, 7);
         lvwHotelService.setPrefWidth(200);
         lvwHotelService.setPrefHeight(200);
-//        lvwHotel.getItems().setAll(Service.getHotels());
+        lvwHotel.getItems().setAll();
         
+        btnCreate.setOnAction(event -> this.createAction());
+        btnEdit.setOnAction(event -> this.updateAction());
+        btnDelete.setOnAction(event -> this.deleteAction());
+        
+        
+	}
+	
+	private ArrayList<Participant> initParticipantList()
+	{
+		ArrayList<Participant> list = new ArrayList<>();
+		for( Participant participant: Service.getParticipants())
+		{
+			list.add(participant);
+		}
+		return list;
+	}
+	
+	
+	private void createAction()
+	{
+//		ParticipantDialog dia = new ParticipantDialog ("Create Participant");
+//		dia.showAndWait();
+		
+		lvwParticipant.getItems().setAll(initParticipantList());
+		this.updateControls();
+	}
+	
+	private void updateAction()
+	{
+		Participant participant = lvwParticipant.getSelectionModel().getSelectedItem();
+		if (participant == null)
+			return;
+//		ParticipantDialog dia = new ParticipantDialog ("Update Participant", Participant);
+//		dia.showAndWait();
+		
+		int selectIndex = lvwParticipant.getSelectionModel().getSelectedIndex();
+		lvwParticipant.getItems().setAll(this.initParticipantList());
+		lvwParticipant.getSelectionModel().select(selectIndex);
+	}
+	
+	private void deleteAction()
+	{
+		Participant participant = lvwParticipant.getSelectionModel().getSelectedItem();
+		if (participant == null)
+			return;
+//		ParticipantDialog dia = new ParticipantDialog ("Update Participant", Participant);
+//		dia.showAndWait();
+		
+		Service.deleteParticipant(participant);
+		lvwParticipant.getItems().setAll(this.initParticipantList());
+		this.updateControls();
+	}
+	
+	//-----------------------------------------------------------------
+	
+	private ArrayList<Hotel> getHotelsFromConferences()
+	{
+		ArrayList<Hotel> hotels = new ArrayList<>();
+		for (Conference conference: Service.getConferences())
+		{
+			hotels.add(conference.getHotelsArray());
+		}
+		return hotels;
+	}
+	
+	private void selectedParticipantChanged() {
+		this.updateControls();
+	}
+	
+	private void updateControls()
+	{
+		Participant participant = lvwParticipant.getSelectionModel().getSelectedItem();
+		if ( participant != null)
+		{
+			txfAdress.setText(participant.getAddress());
+			txfCountryOrCity.setText(participant.getLandOrCity());
+			txfPhoneNr.setText(""+participant.getTelephone());
+			
+			if( participant.getCompany() != null)
+			{
+				txfCompany.setText(participant.getCompany()+"");
+			}
+			else
+			{
+				txfCompany.clear();
+			}
+		}
+		else
+		{
+			txfAdress.clear();
+			txfCountryOrCity.clear();
+			txfPhoneNr.clear();
+		}
 	}
 }

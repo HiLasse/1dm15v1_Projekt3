@@ -33,6 +33,8 @@ public class Participant {
 	 */
 	private Company company;
 	
+	private String LandOrCity;
+	
 	private boolean lecture;
 	
 	private Companion companion;
@@ -174,5 +176,14 @@ public class Participant {
 	{
 		return companion;
 	}
+
+	public String getLandOrCity() {
+		return LandOrCity;
+	}
+
+	public void setLandOrCity(String landOrCity) {
+		LandOrCity = landOrCity;
+	}
+	
 	
 }

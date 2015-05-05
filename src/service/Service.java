@@ -1,6 +1,7 @@
 package service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import model.Companion;
 import model.Company;
@@ -49,6 +50,11 @@ public class Service {
 
 	public static void deleteParticipant(Participant participant) {
 		Storage.removeParticipent(participant);
+	}
+	
+	public static ArrayList<Participant> getParticipants()
+	{
+		return Storage.getParticipent();
 	}
 
 	//-----------------------------------------------------------------------------------------
@@ -104,6 +110,11 @@ public class Service {
 
 	public static void deleteConference(Conference conference) {
 		Storage.removeConference(conference);
+	}
+	
+	public static ArrayList<Conference> getConferences()
+	{
+		return Storage.getConferences();
 	}
 
 	//----------------------------------------------------------------------------------------
