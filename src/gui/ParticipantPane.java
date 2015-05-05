@@ -280,7 +280,7 @@ public class ParticipantPane extends GridPane {
 
 			for(Registration x: Service.getRegistration())
 			{
-				if(x.equals(participant))
+				if(x.getParticipant().equals(participant))
 				{
 					txfHotel.setText(x.getHotel().getName());
 				}
