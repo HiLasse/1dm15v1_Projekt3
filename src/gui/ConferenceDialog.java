@@ -5,6 +5,7 @@ import model.Conference;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -21,12 +22,10 @@ import javafx.stage.StageStyle;
 public class ConferenceDialog extends Stage {
     private Conference conference;
 
-    public ConferenceDialog(String title, Conference conference) {
+    public ConferenceDialog(String title) {
         this.initStyle(StageStyle.UTILITY);
         this.initModality(Modality.APPLICATION_MODAL);
         this.setResizable(false);
-
-        this.conference = conference;
 
         this.setTitle(title);
         GridPane pane = new GridPane();
@@ -35,13 +34,13 @@ public class ConferenceDialog extends Stage {
         Scene scene = new Scene(pane);
         this.setScene(scene);
     }
-
-    public ConferenceDialog(String title) {
-        this(title, null);
-    }
+//
+//    public ConferenceDialog(String title) {
+//        this(title, null);
+//    }
 
     // -------------------------------------------------------------------------
-    private Label lblName, lblPlace, lblDay, lblMonth, lblYear, lblStartTime, lblEndTime;
+    private Label lblName, lblPlace, lblDay, lblMonth, lblYear, lblStartTime, lblEndTime, lblHotels, lblAllHotels, lblExcursions, lblAllExcursions;
     private TextField txfName, txfPlace, txfStartDay, txfStartMonth ,txfStartYear, txfEndDay, txfEndMonth, txfEndYear;
     private ListView lvwHotels, lvwAllHotels, lvwExcursions, lvwAllExcursions;
     private int row;
@@ -67,7 +66,7 @@ public class ConferenceDialog extends Stage {
 
         row++;
         txfPlace = new TextField();
-        pane.add(txfPlace, 0, row);
+        pane.add(txfPlace, 0, row, 2, 1);
         
         row++;
         //---tidpane start---
@@ -98,7 +97,7 @@ public class ConferenceDialog extends Stage {
         
         txfStartMonth = new TextField();
         timePane.add(txfStartMonth, 2, 1);
-        txfEndMonth.setPrefWidth(40);
+        txfStartMonth.setPrefWidth(40);
         
         txfStartYear = new TextField();
         timePane.add(txfStartYear, 3, 1);
@@ -118,18 +117,32 @@ public class ConferenceDialog extends Stage {
         
         //---tidpane slut---
 
+        
+        row++;
+        lblHotels = new Label("Hotels");
+        pane.add(lblHotels, 0, row);
+        
+        lblAllHotels = new Label("All Hotels");
+        pane.add(lblAllHotels, 1, row);
+        
         row++;
         lvwHotels = new ListView<>();
         pane.add(lvwHotels, 0, row);
         lvwHotels.setPrefWidth(150);
         lvwHotels.setPrefHeight(100);
-
         
         lvwAllHotels = new ListView<>();
-        pane.add(lvwAllHotels, 0, row);
+        pane.add(lvwAllHotels, 1, row);
         lvwAllHotels.setPrefWidth(150);
         lvwAllHotels.setPrefHeight(100);
 //        lvwAllHotels.getItems().setAll(Service.getHotels());        
+        
+        row++;
+        lblExcursions = new Label("Excursions");
+        pane.add(lblExcursions, 0, row);
+        
+        lblAllExcursions = new Label("All excursions");
+        pane.add(lblAllExcursions, 1, row);
         
         row++;
         lvwExcursions = new ListView<>();
@@ -139,7 +152,7 @@ public class ConferenceDialog extends Stage {
 
         
         lvwAllExcursions = new ListView<>();
-        pane.add(lvwAllExcursions, 0, row);
+        pane.add(lvwAllExcursions, 1, row);
         lvwAllExcursions.setPrefWidth(150);
         lvwAllExcursions.setPrefHeight(100);
 //        lvwAllHotels.getItems().setAll(Service.getHotels());
@@ -147,13 +160,14 @@ public class ConferenceDialog extends Stage {
         row++;
         Button btnOK = new Button("OK");
         pane.add(btnOK, 0, row);
+        pane.setHalignment(btnOK, HPos.RIGHT);
 //        GridPane.setHalignment(btnOK, HPos.RIGHT);
 //        btnOK.setOnAction(event -> this.okAction());
         
         Button btnCancel = new Button("Cancel");
         pane.add(btnCancel, 1, row);
 //        GridPane.setHalignment(btnCancel, HPos.LEFT);
-//        btnCancel.setOnAction(event -> this.cancelAction());
+        btnCancel.setOnAction(event -> this.cancelAction());
 
         
 
@@ -178,10 +192,10 @@ public class ConferenceDialog extends Stage {
 
     // -------------------------------------------------------------------------
 
-//    private void cancelAction() {
-//        this.hide();
-//    }
-//
+    private void cancelAction() {
+        this.hide();
+    }
+
 //    private void okAction() {
 //        String name = txfName.getText().trim();
 //        if (name.length() == 0) {

@@ -12,6 +12,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class ConferencePane extends GridPane {
@@ -142,14 +143,12 @@ public class ConferencePane extends GridPane {
     // -------------------------------------------------------------------------
 
     private void createAction() {
-        ConferenceDialog dia = new ConferenceDialog("Create Conference");
+        ConferenceDialog dia = new ConferenceDialog("Create conference");
         dia.showAndWait();
 
         // Wait for the modal dialog to close
 
-//        lvwCompanies.getItems().setAll(Service.getCompanies());
-//        int index = lvwCompanies.getItems().size() - 1;
-//        lvwCompanies.getSelectionModel().select(index);
+
     }
 //
 //    private void updateAction() {
