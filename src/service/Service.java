@@ -280,7 +280,8 @@ public class Service {
 		Conference co2 = Service.createConference("Egn konf", "der", LocalDate.of(2010, 2, 17), LocalDate.of(2010, 2, 20), 5000);
 		Registration r1 = Service.createRegistration(co1, p1, co1.getStartTime(), co1.getEndTime());
 		Registration r2 = Service.createRegistration(co2, p2, co2.getStartTime(), co2.getEndTime());
-		Hotel h1 = Service.createHotel("Hotel fint", 200);		
+		Hotel h1 = Service.createHotel("Hotel fint", 200);	
+		Hotel h2 = Service.createHotel("Hotel knap-så-fint", 100);
 		HotelService hs1 = Service.createHotelService("Morgenmad", 100);
 		HotelService hs2 = Service.createHotelService("Swimming Pool access", 200);
 		Excursion e1 = Service.createExcursion("Hyggetur til irma", 100, LocalDate.now());
@@ -291,6 +292,8 @@ public class Service {
 		Service.addHotelServiceToHotel(h1, hs2);
 		Service.setHotelToRegistration(r1, h1);
 		Service.setHotelToRegistration(r2, h1);
+		Service.addHotelOfConference(h1, co1);
+		Service.addHotelOfConference(h2, co1);
 		Service.updateCompanionOfParticipant(c1, p1);
 		Service.addCompanionToExcursion(c1, e1);
 

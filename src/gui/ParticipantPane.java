@@ -293,5 +293,6 @@ public class ParticipantPane extends GridPane {
 			txfCountryOrCity.clear();
 			txfPhoneNr.clear();
 		}
+		
 	}
 }
