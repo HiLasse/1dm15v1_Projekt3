@@ -168,7 +168,7 @@ public class ParticipantPane extends GridPane {
         this.add(lvwHotelService, 4, row, 2, 7);
         lvwHotelService.setPrefWidth(200);
         lvwHotelService.setPrefHeight(200);
-        lvwHotel.getItems().setAll();
+//        lvwHotel.getItems().setAll();
         
         btnCreate.setOnAction(event -> this.createAction());
         btnEdit.setOnAction(event -> this.updateAction());
@@ -228,10 +228,6 @@ public class ParticipantPane extends GridPane {
 	private ArrayList<Hotel> getHotelsFromConferences()
 	{
 		ArrayList<Hotel> hotels = new ArrayList<>();
-		for (Conference conference: Service.getConferences())
-		{
-			hotels.add(conference.getHotelsArray());
-		}
 		return hotels;
 	}
 	
