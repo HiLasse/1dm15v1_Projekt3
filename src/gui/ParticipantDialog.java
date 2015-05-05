@@ -132,28 +132,26 @@ public class ParticipantDialog extends Stage {
     
     private void okAction()
     {
+    	
     	String name = txfName.getText().trim();
     	String address = txfAddress.getText().trim();
     	int phone = 0;
-    	if ((txfPhoneNr.getText().trim()).length() != 8)
-    	{
-    		phone = Integer.parseInt(txfPhoneNr.getText().trim());
-    	}
     	String countryOrCity = txfCountryOrCity.getText().trim();
     	String company = txfCompany.getText().trim();
+    	try {
+    		name = txfName.getText().trim();
+    		address = txfAddress.getText().trim();
+    		phone = Integer.parseInt(txfPhoneNr.getText().trim());
+    	} catch (NumberFormatException ex) {
+            // do nothing
+        }
     	
-    	if ( company.trim().length() > 0)
+    	if (name.length() > 0  && address.length() > 0 && countryOrCity.length() > 0 && (txfPhoneNr.getText().trim().length()) > 0)
     	{
-    		
+    		Service.createParticipant(name, address, phone, countryOrCity, false);
+    		this.hide();
     	}
     	
-    	// Service
-    	if ( company.trim().length() > 0)
-    	{
-    	}
-    	Service.createParticipant(name, address, phone, countryOrCity, false);
-
-    	this.hide();
     }
     
     

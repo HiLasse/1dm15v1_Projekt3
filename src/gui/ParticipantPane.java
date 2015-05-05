@@ -107,6 +107,7 @@ public class ParticipantPane extends GridPane {
 				//WIP
 				cbbConference = new ComboBox<>();
 				this.add(cbbConference, 3, row);
+				cbbConference.getItems().setAll(Service.getConferences());
 
 				row++;
 				lblTime = new Label("Time");
@@ -253,6 +254,17 @@ public class ParticipantPane extends GridPane {
 			else
 			{
 				txfCompany.clear();
+			}
+			
+			if (participant.isLecture())
+			{
+				chbLecturer.setDisable(false);
+				chbLecturer.setSelected(true);
+			}
+			else
+			{
+				chbLecturer.setDisable(true);
+				chbLecturer.setSelected(false);
 			}
 
 //			for(Participant x: conference.getParticipantsArray())

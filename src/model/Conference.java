@@ -65,7 +65,12 @@ public class Conference {
 	}
 
 	//-----------------------------------------------------------------------------------------
-
+	@Override
+	public String toString()
+	{
+		return name;
+	}
+	
 	//price methods
 	
 	/**
