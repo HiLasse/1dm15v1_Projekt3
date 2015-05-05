@@ -1,5 +1,6 @@
 package gui;
 
+import service.Service;
 import model.Conference;
 import model.Participant;
 import javafx.geometry.HPos;
@@ -94,7 +95,7 @@ public class ParticipantDialog extends Stage {
         pane.add(btnOK, 0, row);
         
 //        GridPane.setHalignment(btnOK, HPos.RIGHT);
-//        btnOK.setOnAction(event -> this.okAction());
+        btnOK.setOnAction(event -> this.okAction());
         
         Button btnCancel = new Button("Cancel");
         pane.add(btnCancel, 0, row);
@@ -128,7 +129,34 @@ public class ParticipantDialog extends Stage {
     private void cancelAction() {
         this.hide();
     }
+    
+    private void okAction()
+    {
+    	String name = txfName.getText().trim();
+    	String address = txfAddress.getText().trim();
+    	int phone = 0;
+    	if ((txfPhoneNr.getText().trim()).length() != 8)
+    	{
+    		phone = Integer.parseInt(txfPhoneNr.getText().trim());
+    	}
+    	String countryOrCity = txfCountryOrCity.getText().trim();
+    	String company = txfCompany.getText().trim();
+    	
+    	if ( company.trim().length() > 0)
+    	{
+    		
+    	}
+    	
+    	// Service
+    	if ( company.trim().length() > 0)
+    	{
+    	}
+    	Service.createParticipant(name, address, phone, null, false);
 
+    	this.hide();
+    }
+    
+    
 //    private void okAction() {
 //        String name = txfName.getText().trim();
 //        if (name.length() == 0) {

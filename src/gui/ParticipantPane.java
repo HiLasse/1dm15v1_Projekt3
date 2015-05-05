@@ -190,8 +190,8 @@ public class ParticipantPane extends GridPane {
 
 	private void createAction()
 	{
-		//		ParticipantDialog dia = new ParticipantDialog ("Create Participant");
-		//		dia.showAndWait();
+		ParticipantDialog dia = new ParticipantDialog ("Create Participant");
+		dia.showAndWait();
 
 		lvwParticipant.getItems().setAll(initParticipantList());
 		this.updateControls();
@@ -202,8 +202,8 @@ public class ParticipantPane extends GridPane {
 		Participant participant = lvwParticipant.getSelectionModel().getSelectedItem();
 		if (participant == null)
 			return;
-		//		ParticipantDialog dia = new ParticipantDialog ("Update Participant", Participant);
-		//		dia.showAndWait();
+		ParticipantDialog dia = new ParticipantDialog ("Update Participant", participant);
+		dia.showAndWait();
 
 		int selectIndex = lvwParticipant.getSelectionModel().getSelectedIndex();
 		lvwParticipant.getItems().setAll(this.initParticipantList());
@@ -254,7 +254,7 @@ public class ParticipantPane extends GridPane {
 			{
 				txfCompany.clear();
 			}
-			
+
 			for(Participant x: conference.getParticipantsArray())
 			{
 				if(x.equals(participant))
@@ -262,7 +262,7 @@ public class ParticipantPane extends GridPane {
 					txfCompanion.setText(x.getCompanion().getName());
 				}
 			}
-			
+
 			for(Registration x: Service.getRegistration())
 			{
 				if(x.equals(participant))
