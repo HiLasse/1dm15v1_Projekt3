@@ -1,7 +1,7 @@
 package gui;
 
-
 import model.Conference;
+import model.Participant;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -15,15 +15,15 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 
-public class ConferenceDialog extends Stage {
-    private Conference conference;
+public class ParticipantDialog extends Stage {
+    private Participant participant;
 
-    public ConferenceDialog(String title, Conference conference) {
+    public ParticipantDialog(String title, Participant participant) {
         this.initStyle(StageStyle.UTILITY);
         this.initModality(Modality.APPLICATION_MODAL);
         this.setResizable(false);
 
-        this.conference = conference;
+        this.participant = participant;
         
         this.setTitle(title);
         GridPane pane = new GridPane();
@@ -33,14 +33,13 @@ public class ConferenceDialog extends Stage {
         this.setScene(scene);
     }
 
-    public ConferenceDialog(String title) {
+    public ParticipantDialog(String title) {
         this(title, null);
     }
 
     // -------------------------------------------------------------------------
-    private Label lblName, lblPlace, lblDay, lblMonth, lblYear, lblStartTime, lblEndTime, lblHotels, lblAllHotels, lblExcursions, lblAllExcursions;
-    private TextField txfName, txfPlace, txfStartDay, txfStartMonth ,txfStartYear, txfEndDay, txfEndMonth, txfEndYear;
-    private ListView lvwHotels, lvwAllHotels, lvwExcursions, lvwAllExcursions;
+    private Label lblName, lblAddress, lblCountryOrCity, lblPhoneNr, lblCompany;
+    private TextField txfName, txfAddress, txfCountryOrCity, txfPhoneNr, txfCompany;
     private int row;
 
     private void initContent(GridPane pane) {
@@ -51,119 +50,55 @@ public class ConferenceDialog extends Stage {
 
         row = 0;
         lblName = new Label("Name");
-        pane.add(lblName, 0, row, 2, 1);
+        pane.add(lblName, 0, row);
 
         row++;
         txfName = new TextField();
-        pane.add(txfName, 0, row, 2, 1);
+        pane.add(txfName, 0, row);
         txfName.setPrefWidth(200);
 
         row++;
-        lblPlace = new Label("Place");
-        pane.add(lblPlace, 0, row, 2, 1);
+        lblAddress = new Label("Address");
+        pane.add(lblAddress, 0, row);
+        
+        row++;
+        txfAddress = new TextField();
+        pane.add(txfAddress, 0, row);
 
         row++;
-        txfPlace = new TextField();
-        pane.add(txfPlace, 0, row, 2, 1);
+        lblCountryOrCity = new Label("Country or city");
+        pane.add(lblCountryOrCity, 0, row);
         
         row++;
-        //---tidpane start---
-        GridPane timePane = new GridPane();
-        pane.add(timePane, 0, row, 2, 1);
-        timePane.setHgap(10);
-        timePane.setVgap(10);
-        timePane.setGridLinesVisible(false);
-        
-        lblDay = new Label("Day");
-        timePane.add(lblDay, 1, 0);
-        
-        lblMonth = new Label("Month");
-        timePane.add(lblMonth, 2, 0);
-        
-        lblYear = new Label("Year");
-        timePane.add(lblYear, 3, 0);
-        
-        lblStartTime = new Label("Start time");
-        timePane.add(lblStartTime, 0, 1);
-
-        lblEndTime = new Label("End time");
-        timePane.add(lblEndTime, 0, 2);
-        
-        txfStartDay = new TextField();
-        timePane.add(txfStartDay, 1, 1);
-        txfStartDay.setPrefWidth(40);
-        
-        txfStartMonth = new TextField();
-        timePane.add(txfStartMonth, 2, 1);
-        txfStartMonth.setPrefWidth(40);
-        
-        txfStartYear = new TextField();
-        timePane.add(txfStartYear, 3, 1);
-        txfStartYear.setPrefWidth(60);
-        
-        txfEndDay = new TextField();
-        timePane.add(txfEndDay, 1, 2);
-        txfEndDay.setPrefWidth(40);
-        
-        txfEndMonth = new TextField();
-        timePane.add(txfEndMonth, 2, 2);
-        txfEndMonth.setPrefWidth(40);
-        
-        txfEndYear = new TextField();
-        timePane.add(txfEndYear, 3, 2);
-        txfEndYear.setPrefWidth(60);
-        
-        //---tidpane slut---
-
+        txfCountryOrCity = new TextField();
+        pane.add(txfCountryOrCity, 0, row);
         
         row++;
-        lblHotels = new Label("Hotels");
-        pane.add(lblHotels, 0, row);
-        
-        lblAllHotels = new Label("All Hotels");
-        pane.add(lblAllHotels, 1, row);
+        lblPhoneNr = new Label("Phone number");
+        pane.add(lblPhoneNr, 0, row);
         
         row++;
-        lvwHotels = new ListView<>();
-        pane.add(lvwHotels, 0, row);
-        lvwHotels.setPrefWidth(150);
-        lvwHotels.setPrefHeight(100);
-        
-        lvwAllHotels = new ListView<>();
-        pane.add(lvwAllHotels, 1, row);
-        lvwAllHotels.setPrefWidth(150);
-        lvwAllHotels.setPrefHeight(100);
-//        lvwAllHotels.getItems().setAll(Service.getHotels());        
+        txfPhoneNr = new TextField();
+        pane.add(txfPhoneNr, 0, row);
         
         row++;
-        lblExcursions = new Label("Excursions");
-        pane.add(lblExcursions, 0, row);
-        
-        lblAllExcursions = new Label("All excursions");
-        pane.add(lblAllExcursions, 1, row);
+        lblCompany = new Label("Company");
+        pane.add(lblCompany, 0, row);
         
         row++;
-        lvwExcursions = new ListView<>();
-        pane.add(lvwExcursions, 0, row);
-        lvwExcursions.setPrefWidth(150);
-        lvwExcursions.setPrefHeight(100);
-
-        
-        lvwAllExcursions = new ListView<>();
-        pane.add(lvwAllExcursions, 1, row);
-        lvwAllExcursions.setPrefWidth(150);
-        lvwAllExcursions.setPrefHeight(100);
-//        lvwAllHotels.getItems().setAll(Service.getHotels());
+        txfCompany = new TextField();
+        pane.add(txfCompany, 0, row);
         
         row++;
         Button btnOK = new Button("OK");
         pane.add(btnOK, 0, row);
-        pane.setHalignment(btnOK, HPos.RIGHT);
+        
 //        GridPane.setHalignment(btnOK, HPos.RIGHT);
 //        btnOK.setOnAction(event -> this.okAction());
         
         Button btnCancel = new Button("Cancel");
-        pane.add(btnCancel, 1, row);
+        pane.add(btnCancel, 0, row);
+        pane.setHalignment(btnCancel, HPos.RIGHT);
 //        GridPane.setHalignment(btnCancel, HPos.LEFT);
         btnCancel.setOnAction(event -> this.cancelAction());
 
