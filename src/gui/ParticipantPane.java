@@ -43,7 +43,7 @@ public class ParticipantPane extends GridPane {
 		this.add(lvwParticipant, 0, row, 3, 6);
 		lvwParticipant.setPrefWidth(200);
 		lvwParticipant.setPrefHeight(20);
-		lvwParticipant.getItems().setAll(this.initParticipantList());
+		lvwParticipant.getItems().setAll(Service.getParticipants()); // this.initParticipantList()
 		ChangeListener<Participant> listener =
 				(ov, oldParticipant, newParticipant) -> this.selectedParticipantChanged();
 				lvwParticipant.getSelectionModel().selectedItemProperty().addListener(listener);
@@ -243,7 +243,7 @@ public class ParticipantPane extends GridPane {
 		if ( participant != null)
 		{
 			txfAdress.setText(participant.getAddress());
-			txfCountryOrCity.setText(participant.getLandOrCity());
+			txfCountryOrCity.setText(participant.getCountryOrCity());
 			txfPhoneNr.setText(""+participant.getTelephone());
 
 			if( participant.getCompany() != null)
@@ -255,13 +255,16 @@ public class ParticipantPane extends GridPane {
 				txfCompany.clear();
 			}
 
-			for(Participant x: conference.getParticipantsArray())
-			{
-				if(x.equals(participant))
-				{
-					txfCompanion.setText(x.getCompanion().getName());
-				}
-			}
+//			for(Participant x: conference.getParticipantsArray())
+//			{
+//				if(x.equals(participant))
+//				{
+//					if (x.getCompanion().getName().trim().length() > 0)
+//					{
+//					 txfCompanion.setText(x.getCompanion().getName());
+//					}
+//				}
+//			}
 
 			for(Registration x: Service.getRegistration())
 			{

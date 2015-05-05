@@ -1,7 +1,7 @@
 package model;
 
 /**
- * A Participant with name, address, tel and email
+ * A Participant with name, address, tel and countryOrCity
  * Must be linked with the company class
  * and can be linked with attendance class
  */
@@ -26,14 +26,14 @@ public class Participant {
 	/**
 	 * e-mail address of Participant
 	 */
-	private String email;
+	private String countryOrCity;
 
 	/**
 	 * Company person works for (company class)
 	 */
 	private Company company;
 	
-	private String LandOrCity;
+	private String CountryOrCity;
 	
 	private boolean lecture;
 	
@@ -48,18 +48,25 @@ public class Participant {
 	 * @param name of Participant
 	 * @param address of Participant
 	 * @param telephone of Participant
-	 * @param email of Participant
+	 * @param countryOrCity of Participant
 	 */
-	public Participant(String name, String address, int telephone, String email, boolean lecture){
+	public Participant(String name, String address, int telephone, String countryOrCity, boolean lecture){
 		this.name = name;
 		this.address = address;
 		this.telephone = telephone;
-		this.email = email;
+		this.countryOrCity = countryOrCity;
 		this.lecture = lecture;
 	}
 
 	//-----------------------------------------------------------------------------------------
 
+
+	@Override
+	public String toString() {
+		return name;
+	}
+	
+	
 	//name methods
 	
 	/**
@@ -120,22 +127,22 @@ public class Participant {
 
 	//-----------------------------------------------------------------------------------------
 
-	//email methods
+	//countryOrCity methods
 	
 	/**
-	 * Gets the email address of Participant
-	 * @return the persons email
+	 * Gets the countryOrCity address of Participant
+	 * @return the persons countryOrCity
 	 */
-	public String getEmail() {
-		return email;
+	public String getCountryOrCity() {
+		return countryOrCity;
 	}
 
 	/**
-	 * Change the email address of Participant
-	 * @param email the sets email address
+	 * Change the countryOrCity address of Participant
+	 * @param countryOrCity the sets countryOrCity address
 	 */
-	public void setEmail(String email) {
-		this.email = email;
+	public void setCountryOrCity(String countryOrCity) {
+		this.countryOrCity = countryOrCity;
 	}
 
 	//-----------------------------------------------------------------------------------------
@@ -177,13 +184,7 @@ public class Participant {
 		return companion;
 	}
 
-	public String getLandOrCity() {
-		return LandOrCity;
-	}
-
-	public void setLandOrCity(String landOrCity) {
-		LandOrCity = landOrCity;
-	}
+	
 	
 	
 }

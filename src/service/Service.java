@@ -41,9 +41,9 @@ public class Service {
 		return participant;
 	}
 
-	public static void updateParticipant(Participant participant, String name, String address, int telephone, String email) {
+	public static void updateParticipant(Participant participant, String name, String address, int telephone, String CountryOrCity) {
 		participant.setAddress(address);
-		participant.setEmail(email);
+		participant.setCountryOrCity(CountryOrCity);
 		participant.setName(name);
 		participant.setTelephone(telephone);
 	}
@@ -269,9 +269,13 @@ public class Service {
 	public static void initStorage() 
 	{
 		//Creation of objects
-		Participant p1 = Service.createParticipant("Dennis", "Vej21", 9876543, "lol@gmail.nu", false);
-		Participant p2 = Service.createParticipant("Dennissss", "Vej2221", 98276543, "lo123l@gmail.nu", true);
-		Companion c1 = Service.createCompanion("Lars Allan for fanden");
+		Participant p1 = Service.createParticipant("Dennis", "Vej21", 41276398, "England", false);
+		Participant p2 = Service.createParticipant("Jørgen", "Vej2221", 28676543, "Denmark", true);
+		Participant p3 = Service.createParticipant("Gitte", "Vej21", 51613692, "Denmark", false);
+		Participant p4 = Service.createParticipant("Leif", "Vej2221", 36519883, "Germany", false);
+		Participant p5 = Service.createParticipant("Hanne", "Vej21", 71647934, "Sweden", false);
+		Participant p6 = Service.createParticipant("Kurt", "Horsens Allé 12", 72515326, "Denmark", false);
+		Companion c1 = Service.createCompanion("Helle");
 		Conference co1 = Service.createConference("Bæver konf", "her", LocalDate.of(2001, 2, 17), LocalDate.of(2001, 2, 20), 1000);
 		Conference co2 = Service.createConference("Egn konf", "der", LocalDate.of(2010, 2, 17), LocalDate.of(2010, 2, 20), 5000);
 		Registration r1 = Service.createRegistration(co1, p1, co1.getStartTime(), co1.getEndTime());

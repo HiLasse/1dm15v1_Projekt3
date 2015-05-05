@@ -151,7 +151,7 @@ public class ParticipantDialog extends Stage {
     	if ( company.trim().length() > 0)
     	{
     	}
-    	Service.createParticipant(name, address, phone, null, false);
+    	Service.createParticipant(name, address, phone, countryOrCity, false);
 
     	this.hide();
     }
