@@ -125,23 +125,32 @@ public class ConferencePane extends GridPane {
         row+=5;
         btnRegister = new Button("Register");
         this.add(btnRegister, 4, row);
+       
+        
+        
+        //Button actions-----------------------------------------------------------
+        btnCreate.setOnAction(event -> createAction());
         
         
         
     }
+	
+	
+	
+	
 
     // -------------------------------------------------------------------------
 
-//    private void createAction() {
-//        CompanyDialog dia = new CompanyDialog("Create Company");
-//        dia.showAndWait();
-//
-//        // Wait for the modal dialog to close
-//
+    private void createAction() {
+        ConferenceDialog dia = new ConferenceDialog("Create Conference");
+        dia.showAndWait();
+
+        // Wait for the modal dialog to close
+
 //        lvwCompanies.getItems().setAll(Service.getCompanies());
 //        int index = lvwCompanies.getItems().size() - 1;
 //        lvwCompanies.getSelectionModel().select(index);
-//    }
+    }
 //
 //    private void updateAction() {
 //        Company company = lvwCompanies.getSelectionModel().getSelectedItem();
