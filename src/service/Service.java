@@ -127,6 +127,11 @@ public class Service {
 		Storage.addRegistration(registration);
 		return registration;
 	}
+	
+	public static ArrayList<Registration> getRegistration()
+	{
+		return Storage.getRegistration();
+	}
 
 	//----------------------------------------------------------------------------------------
 	//Companion methods
