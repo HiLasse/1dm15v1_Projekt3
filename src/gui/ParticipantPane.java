@@ -190,7 +190,7 @@ public class ParticipantPane extends GridPane {
 		}
 		return list;
 	}
-	
+
 	private ArrayList<Excursion> initExcursionList()
 	{
 		ArrayList<Excursion> list = new ArrayList<>();
@@ -249,8 +249,8 @@ public class ParticipantPane extends GridPane {
 	private void selectedParticipantChanged() {
 		this.updateControls();
 	}
-	
-	
+
+
 
 	private void updateControls()
 	{
@@ -262,7 +262,7 @@ public class ParticipantPane extends GridPane {
 			txfAdress.setText(participant.getAddress());
 			txfCountryOrCity.setText(participant.getCountryOrCity());
 			txfPhoneNr.setText(""+participant.getTelephone());
-			
+
 			//Company
 			if( participant.getCompany() != null)
 			{
@@ -272,7 +272,7 @@ public class ParticipantPane extends GridPane {
 			{
 				txfCompany.clear();
 			}
-			
+
 			//Lecturer
 			if (participant.isLecture())
 			{
@@ -284,19 +284,21 @@ public class ParticipantPane extends GridPane {
 				chbLecturer.setDisable(true);
 				chbLecturer.setSelected(false);
 			}
-			
+
 			//Companion
-//			for(Participant x: conference.getParticipantsArray())
-//			{
-//				if(x.getCompanion().equals(participant.getCompanion()))
-//				{
-//					if (x.getCompanion().getName().trim().length() > 0)
-//					{
-//					 txfCompanion.setText(x.getCompanion().getName());
-//					}
-//				}
-//			}
-			
+			//			for(Participant x: conference.getParticipantsArray())
+			//			{
+			//				if(x.getCompanion().equals(participant.getCompanion()))
+			//				{
+			//					if (x.getCompanion().getName().trim().length() > 0)
+			//					{
+			//					 txfCompanion.setText(x.getCompanion().getName());
+			//					}
+			//				}
+			//			}
+
+
+
 			// Hotel
 			for(Registration x: Service.getRegistration())
 			{
@@ -304,13 +306,19 @@ public class ParticipantPane extends GridPane {
 				{
 					txfHotel.setText(x.getHotel().getName());
 				}
-//				else 
-//				{ 
-//					txfHotel.clear();
-//				}
+				else 
+				{ 
+					txfHotel.clear();
+				}
 				txfPrice.setText(x.calcTotalPrice()+"");
+
+				if(participant.getCompanion() != null){
+					txfCompanion.setText(participant.getCompanion().getName());
+				} else {
+					txfCompanion.clear();
+				}
 			}
-			
+
 			// Hotel Service
 			for(Registration x: Service.getRegistration()) 
 			{
@@ -320,7 +328,7 @@ public class ParticipantPane extends GridPane {
 				}
 				txfPrice.setText(x.calcTotalPrice()+"");
 			}
-			
+
 			//Excursion
 			for(Registration x: Service.getRegistration()) 
 			{
@@ -337,6 +345,6 @@ public class ParticipantPane extends GridPane {
 			txfCountryOrCity.clear();
 			txfPhoneNr.clear();
 		}
-		
+
 	}
 }
