@@ -25,7 +25,7 @@ public class ParticipantPane extends GridPane {
 	private Label lblConference, lblParticipant, lblAddress, lblTime, lblCountryOrCity, lblPhoneNr, lblCompany, lblCompanion, lblExcursion, lblHotel, lblHotelService, lblPrice;
 	private ListView<Excursion>  lvwExcursion; 
 	private ListView<HotelService>lvwHotelService;
-	private ListView<Participant> lvwParticipant;
+	private ListView<Registration> lvwParticipant;
 	private TextField txfConf, txfAdress, txfTime, txfCountryOrCity, txfPhoneNr, txfCompany, txfCompanion, txfHotel, txfPrice;
 	private CheckBox chbLecturer;
 	private Button btnCreate, btnEdit, btnDelete, btnRegister;
@@ -57,11 +57,13 @@ public class ParticipantPane extends GridPane {
 		this.add(lvwParticipant, 0, row, 3, 6);
 		lvwParticipant.setPrefWidth(200);
 		lvwParticipant.setPrefHeight(20);
-		lvwParticipant.getItems().setAll(cbbConference.getSelectionModel().getSelectedItem().getParticipantsArray()); // this.initParticipantList()
-		
-		ChangeListener<Participant> listener =
+//		lvwParticipant.getItems().setAll(cbbConference.getSelectionModel().getSelectedItem().getRegistrationsArray()); // this.initParticipantList()
+		ChangeListener<Registration> listener =
 				(ov, oldParticipant, newParticipant) -> this.selectedParticipantChanged();
 				lvwParticipant.getSelectionModel().selectedItemProperty().addListener(listener);
+		ChangeListener<Conference> listener2 =
+						(ov, oldConference, newConference) -> this.selectedParticipantChanged();
+						cbbConference.getSelectionModel().selectedItemProperty().addListener(listener2);
 
 
 				//        lvwHotel.getItems().setAll(Service.getHotels());
@@ -198,10 +200,10 @@ public class ParticipantPane extends GridPane {
 				alwaysSelect();
 	}
 
-	private ArrayList<Participant> initParticipantList()
+	private ArrayList<Registration> initParticipantList()
 	{
-		ArrayList<Participant> list = new ArrayList<>();
-		for( Participant participant: Service.getParticipants())
+		ArrayList<Registration> list = new ArrayList<>();
+		for(Registration participant: Service.getRegistration())
 		{
 			list.add(participant);
 		}
@@ -224,17 +226,17 @@ public class ParticipantPane extends GridPane {
 		ParticipantDialog dia = new ParticipantDialog ("Create Participant");
 		dia.showAndWait();
 
-		lvwParticipant.getItems().setAll(initParticipantList());
+		lvwParticipant.getItems();
 		this.updateControls();
 		alwaysSelect();
 	}
 
 	private void updateAction()
 	{
-		Participant participant = lvwParticipant.getSelectionModel().getSelectedItem();
+		Registration participant = lvwParticipant.getSelectionModel().getSelectedItem();
 		if (participant == null)
 			return;
-		ParticipantDialog dia = new ParticipantDialog ("Update Participant", participant);
+		ParticipantDialog dia = new ParticipantDialog ("Update Participant", participant.getParticipant());
 		dia.showAndWait();
 		alwaysSelect();
 
@@ -245,13 +247,13 @@ public class ParticipantPane extends GridPane {
 
 	private void deleteAction()
 	{
-		Participant participant = lvwParticipant.getSelectionModel().getSelectedItem();
+		Registration participant = lvwParticipant.getSelectionModel().getSelectedItem();
 		if (participant == null)
 			return;
 		//		ParticipantDialog dia = new ParticipantDialog ("Update Participant", Participant);
 		//		dia.showAndWait();
 
-		Service.deleteParticipant(participant);
+		Service.deleteParticipant(participant.getParticipant());
 		lvwParticipant.getItems().setAll(this.initParticipantList());
 		this.updateControls();
 		alwaysSelect();
@@ -279,19 +281,20 @@ public class ParticipantPane extends GridPane {
 
 	private void updateControls()
 	{
-		Participant participant = lvwParticipant.getSelectionModel().getSelectedItem();
+		lvwParticipant.getItems().setAll(cbbConference.getSelectionModel().getSelectedItem().getRegistrationsArray());
+		Registration participant = lvwParticipant.getSelectionModel().getSelectedItem();
 		Conference conference = cbbConference.getSelectionModel().getSelectedItem();
 		Excursion excursion = lvwExcursion.getSelectionModel().getSelectedItem();
 		if ( participant != null)
 		{
-			txfAdress.setText(participant.getAddress());
-			txfCountryOrCity.setText(participant.getCountryOrCity());
-			txfPhoneNr.setText(""+participant.getTelephone());
+			txfAdress.setText(participant.getParticipant().getAddress());
+			txfCountryOrCity.setText(participant.getParticipant().getCountryOrCity());
+			txfPhoneNr.setText(""+participant.getParticipant().getTelephone());
 
 			//Company
-			if( participant.getCompany() != null)
+			if( participant.getParticipant().getCompany() != null)
 			{
-				txfCompany.setText(participant.getCompany()+"");
+				txfCompany.setText(participant.getParticipant().getCompany()+"");
 			}
 			else
 			{
@@ -299,7 +302,7 @@ public class ParticipantPane extends GridPane {
 			}
 
 			//Lecturer
-			if (participant.isLecture())
+			if (participant.getParticipant().isLecture())
 			{
 				chbLecturer.setDisable(false);
 				chbLecturer.setSelected(true);

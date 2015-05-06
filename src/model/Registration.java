@@ -143,6 +143,10 @@ public class Registration
 		return participant;
 	}
 	
+	@Override
+	public String toString() {
+		return participant.getName();
+	}
 	
 
 
