@@ -57,7 +57,8 @@ public class ParticipantPane extends GridPane {
 		this.add(lvwParticipant, 0, row, 3, 6);
 		lvwParticipant.setPrefWidth(200);
 		lvwParticipant.setPrefHeight(20);
-		lvwParticipant.getItems().setAll(Service.getParticipants()); // this.initParticipantList()
+		lvwParticipant.getItems().setAll(cbbConference.getSelectionModel().getSelectedItem().getParticipantsArray()); // this.initParticipantList()
+		
 		ChangeListener<Participant> listener =
 				(ov, oldParticipant, newParticipant) -> this.selectedParticipantChanged();
 				lvwParticipant.getSelectionModel().selectedItemProperty().addListener(listener);
