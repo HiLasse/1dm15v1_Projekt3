@@ -57,7 +57,8 @@ public class ParticipantPane extends GridPane {
 		this.add(lvwParticipant, 0, row, 3, 6);
 		lvwParticipant.setPrefWidth(200);
 		lvwParticipant.setPrefHeight(20);
-		lvwParticipant.getItems().setAll(Service.getParticipants()); // this.initParticipantList()
+		lvwParticipant.getItems().setAll(cbbConference.getSelectionModel().getSelectedItem().getParticipantsArray()); // this.initParticipantList()
+		
 		ChangeListener<Participant> listener =
 				(ov, oldParticipant, newParticipant) -> this.selectedParticipantChanged();
 				lvwParticipant.getSelectionModel().selectedItemProperty().addListener(listener);
@@ -194,7 +195,7 @@ public class ParticipantPane extends GridPane {
 				btnEdit.setOnAction(event -> this.updateAction());
 				btnDelete.setOnAction(event -> this.deleteAction());
 
-
+				alwaysSelect();
 	}
 
 	private ArrayList<Participant> initParticipantList()
@@ -225,6 +226,7 @@ public class ParticipantPane extends GridPane {
 
 		lvwParticipant.getItems().setAll(initParticipantList());
 		this.updateControls();
+		alwaysSelect();
 	}
 
 	private void updateAction()
@@ -234,6 +236,7 @@ public class ParticipantPane extends GridPane {
 			return;
 		ParticipantDialog dia = new ParticipantDialog ("Update Participant", participant);
 		dia.showAndWait();
+		alwaysSelect();
 
 		int selectIndex = lvwParticipant.getSelectionModel().getSelectedIndex();
 		lvwParticipant.getItems().setAll(this.initParticipantList());
@@ -251,16 +254,22 @@ public class ParticipantPane extends GridPane {
 		Service.deleteParticipant(participant);
 		lvwParticipant.getItems().setAll(this.initParticipantList());
 		this.updateControls();
+		alwaysSelect();
 	}
 
 	//-----------------------------------------------------------------
 
-	private ArrayList<Hotel> getHotelsFromConferences()
-	{
-		Conference conference = cbbConference.getSelectionModel().getSelectedItem();
-		ArrayList<Hotel> hotels = conference.getHotelsArray();
-		return hotels;
-	}
+	private void alwaysSelect()
+    {
+            if (lvwParticipant.getItems().size() > 0)
+            {
+                    lvwParticipant.getSelectionModel().select(0);
+            }
+            if (cbbConference.getItems().size() > 0)
+            {
+                    cbbConference.getSelectionModel().select(0);
+            }
+    }
 
 	private void selectedParticipantChanged() {
 		this.updateControls();
@@ -316,24 +325,25 @@ public class ParticipantPane extends GridPane {
 
 
 			// Hotel
-			for(Registration x: Service.getRegistration())
-			{
-				if(x.getParticipant().equals(participant))
-				{
-					txfHotel.setText(x.getHotel().getName());
-				}
-				else 
-				{ 
-					txfHotel.clear();
-				}
-				txfPrice.setText(x.calcTotalPrice()+"");
-
-				if(participant.getCompanion() != null){
-					txfCompanion.setText(participant.getCompanion().getName());
-				} else {
-					txfCompanion.clear();
-				}
-			}
+//			for(Registration x: Service.getRegistration())
+//			{
+//				if(x.getParticipant().equals(participant))
+//				{
+//					txfHotel.setText(x.getHotel().getName());
+//				}
+//				else 
+//				{ 
+//					txfHotel.clear();
+//				}
+//				txfPrice.setText(x.calcTotalPrice()+"");
+//
+//				if(participant.getCompanion() != null){
+//					txfCompanion.setText(participant.getCompanion().getName());
+//				} else {
+//					txfCompanion.clear();
+//				}
+//			}
+//			txfHotel.setText()
 
 			// Hotel Service
 			for(Registration x: Service.getRegistration()) 
