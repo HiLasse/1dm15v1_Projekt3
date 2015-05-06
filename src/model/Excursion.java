@@ -66,6 +66,11 @@ public class Excursion {
 		this.name = name;
 	}
 	
+	@Override
+	public String toString() {
+		return name;
+	}
+	
 	//-----------------------------------------------------------------------------------------
 
 	//price methods

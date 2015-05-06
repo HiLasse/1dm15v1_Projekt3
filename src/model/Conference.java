@@ -3,6 +3,8 @@ package model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import storage.Storage;
+
 public class Conference {
 	//Fields
 	/**
@@ -162,6 +164,14 @@ public class Conference {
 	//-----------------------------------------------------------------------------------------
 
 	//participans methods
+	
+	public ArrayList<Participant> getParticipants () {
+		ArrayList<Participant> participants = new ArrayList<Participant>();
+		for (Registration registration : Storage.getRegistration()) {
+			participants.add(registration.getParticipant());
+		}
+		return participants;
+	}
 	
 	/**
 	 * @return the registrations ArrayList of the Conference
