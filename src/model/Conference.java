@@ -1,9 +1,12 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 
-import storage.Storage;
+import com.sun.corba.se.internal.Interceptors.PIORB;
+
+import service.Service;
 
 public class Conference {
 	//Fields
@@ -46,6 +49,8 @@ public class Conference {
 	 * price of Conference per day per Participant
 	 */
 	private double price;
+
+	private long days;
 	
 	//-----------------------------------------------------------------------------------------
 
@@ -160,17 +165,60 @@ public class Conference {
 	public void setEndTime(LocalDate endTime) {
 		this.endTime = endTime;
 	}
+	
+	//-----------------------------------------------------------------------------------------
+	
+	//Total time method
+	
+	public long getTotaltime() {
+		days = Period.between(startTime, endTime).getDays();
+		return days;
+	}
+	
 
 	//-----------------------------------------------------------------------------------------
 
-	//participans methods
+	//Get participants, companions, excursions and hotels methods
 	
-	public ArrayList<Participant> getParticipants () {
+	public ArrayList<Participant> getParticipants() {
 		ArrayList<Participant> participants = new ArrayList<Participant>();
-		for (Registration registration : Storage.getRegistration()) {
+		for (Registration registration : Service.getRegistration()) {
+			if (registration.getConference().equals(this)){
 			participants.add(registration.getParticipant());
+			}
 		}
 		return participants;
+	}
+	
+	public ArrayList<Companion> getCompanions() {
+		ArrayList<Companion> companions = new ArrayList<Companion>();
+		for (Registration registration : Service.getRegistration()) {
+			if (registration.getConference().equals(this)){
+			companions.add(registration.getCompanion());
+			}
+		}
+		return companions;
+	}
+	
+	public ArrayList<Excursion> getExcursions() {
+		ArrayList<Excursion> excursions = new ArrayList<Excursion>();
+		for (Registration registration : Service.getRegistration()) {
+			if (registration.getConference().equals(this)){
+			excursions.addAll(registration.getExcursions());
+			
+			}
+		}
+		return excursions;
+	}
+	
+	public ArrayList<Hotel> getHotel() {
+		ArrayList<Hotel> Hotel = new ArrayList<Hotel>();
+		for (Registration registration : Service.getRegistration()) {
+			if (registration.getConference().equals(this)){
+			Hotel.add(registration.getHotel());
+			}
+		}
+		return Hotel;
 	}
 	
 	/**
@@ -201,7 +249,7 @@ public class Conference {
 	/**
 	 * @return the excursions ArrayList of the Conference
 	 */
-	public ArrayList<Excursion> getExcursions() {
+	public ArrayList<Excursion> getExcursion() {
 		return excursions;
 	}
 	

@@ -1,15 +1,29 @@
 package gui;
 
+import java.util.ArrayList;
+
+import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import model.Companion;
+import model.Conference;
+import model.Excursion;
+import model.Hotel;
+import model.Participant;
+import model.Registration;
+import service.Service;
 
 public class ConferencePane extends GridPane {
 	private Label lblConference, lblHotel, lblParticipant, lblPlace, lblTime, lblPrice, lblExcursion, lblCompanion;
-	private ListView LvwConference, lvwHotel, lvwExcursion, lvwParticipant, lvwCompanion;
+	private ListView<Conference> lvwConference;
+	private ListView<Hotel> lvwHotel;
+	private ListView<Excursion> lvwExcursion;
+	private ListView<Participant> lvwParticipant;
+	private ListView<Companion> lvwCompanion;
 	private TextField txfPlace, txfTime, txfPrice;
 	private Button btnCreate, btnEdit, btnDelete, btnRegister;
 	private int row;
@@ -26,11 +40,14 @@ public class ConferencePane extends GridPane {
         this.add(lblConference, 0, row, 3, 1);
         
         row++;
-        LvwConference = new ListView<>();
-        this.add(LvwConference, 0, row, 3, 1);
-        LvwConference.setPrefWidth(200);
-        LvwConference.setPrefHeight(200);
-//        lvwCoference.getItems().setAll(Service.getConferences());
+        lvwConference = new ListView<>();
+        this.add(lvwConference, 0, row, 3, 1);
+        lvwConference.setPrefWidth(200);
+        lvwConference.setPrefHeight(200);
+    	lvwConference.getItems().setAll(Service.getConferences());
+    	ChangeListener<Conference> listener =
+    			(ov, oldConference, newConference) -> this.selectedConferenceChanged();
+    			lvwConference.getSelectionModel().selectedItemProperty().addListener(listener);
         
         row++;
         lblPlace = new Label("Place");
@@ -126,6 +143,8 @@ public class ConferencePane extends GridPane {
         
         btnRegister.setOnAction(event -> registerAction());
         
+        alwaysSelect();
+        
     }
 	
 	
@@ -134,6 +153,15 @@ public class ConferencePane extends GridPane {
 
     // -------------------------------------------------------------------------
 
+	private void alwaysSelect()
+	{
+		if (lvwConference.getItems().size() > 0)
+		{
+			lvwConference.getSelectionModel().select(0);
+		}
+	}
+	
+	
     private void createAction() {
         ConferenceDialog dia = new ConferenceDialog("Create conference");
         dia.showAndWait();
@@ -152,7 +180,7 @@ public class ConferencePane extends GridPane {
 
     }
     
-//
+
 //    private void updateAction() {
 //        Company company = lvwCompanies.getSelectionModel().getSelectedItem();
 //        if (company == null)
@@ -198,25 +226,24 @@ public class ConferencePane extends GridPane {
 
     // -------------------------------------------------------------------------
 
-//    private void selectedCompanyChanged() {
-//        this.updateControls();
-//    }
-//
-//    public void updateControls() {
-//        Company company = lvwCompanies.getSelectionModel().getSelectedItem();
-//        if (company != null) {
-//            txfName.setText(company.getName());
-//            txfHours.setText("" + company.getHours());
-//            StringBuilder sb = new StringBuilder();
-//            for (Employee emp : company.getEmployees()) {
-//                sb.append(emp + "\n");
-//            }
-//            txaEmps.setText(sb.toString());
-//        } else {
-//            txfName.clear();
-//            txfHours.clear();
-//            txaEmps.clear();
-//        }
-//    }
+    private void selectedConferenceChanged() {
+        this.updateControls();
+    }
+
+    public void updateControls() {
+        txfPlace.clear();
+        txfPrice.clear();
+        txfTime.clear();        
+        
+    	lvwCompanion.getItems().setAll(lvwConference.getSelectionModel().getSelectedItem().getCompanions());
+    	lvwHotel.getItems().setAll(lvwConference.getSelectionModel().getSelectedItem().getHotel());
+    	lvwParticipant.getItems().setAll(lvwConference.getSelectionModel().getSelectedItem().getParticipants());
+    	lvwExcursion.getItems().setAll(lvwConference.getSelectionModel().getSelectedItem().getExcursion());
+    	
+    	txfPrice.setText(lvwConference.getSelectionModel().getSelectedItem().getPrice()+"");
+    	txfTime.setText(lvwConference.getSelectionModel().getSelectedItem().getTotaltime()+"");
+    	txfPlace.setText(lvwConference.getSelectionModel().getSelectedItem().getAddress());
+    	
+    }
 }
 
