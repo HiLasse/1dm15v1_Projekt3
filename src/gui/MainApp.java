@@ -16,10 +16,10 @@ public class MainApp extends Application {
         Application.launch(args);
     }
 
-//    @Override
-//    public void init() {
-//        Service.initStorage();
-//    }
+    @Override
+    public void init() {
+        Service.initStorage();
+    }
 
     @Override
     public void start(Stage stage) {

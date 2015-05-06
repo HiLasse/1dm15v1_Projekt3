@@ -41,9 +41,9 @@ public class Service {
 		return participant;
 	}
 
-	public static void updateParticipant(Participant participant, String name, String address, int telephone, String email) {
+	public static void updateParticipant(Participant participant, String name, String address, int telephone, String CountryOrCity) {
 		participant.setAddress(address);
-		participant.setEmail(email);
+		participant.setCountryOrCity(CountryOrCity);
 		participant.setName(name);
 		participant.setTelephone(telephone);
 	}
@@ -83,12 +83,17 @@ public class Service {
 	public static HotelService createHotelService(String name, double price)
 	{
 		HotelService hotelservice = new HotelService(name,price);
+		Storage.addHotelService(hotelservice);
 		return hotelservice;
 	}
 
 	public static void updateHotelService(HotelService hotelService, String name, double price) {
 		hotelService.setName(name);
 		hotelService.setPrice(price);
+	}
+	
+	public static void deleteHotelService(HotelService hotelService) {
+		Storage.removeHotelService(hotelService);
 	}
 
 	//-----------------------------------------------------------------------------------------
@@ -126,6 +131,11 @@ public class Service {
 		Registration registration = conference.createRegistration(conference, participant, arrivalDate, departureDate);
 		Storage.addRegistration(registration);
 		return registration;
+	}
+	
+	public static ArrayList<Registration> getRegistration()
+	{
+		return Storage.getRegistration();
 	}
 
 	//----------------------------------------------------------------------------------------
@@ -264,14 +274,23 @@ public class Service {
 	public static void initStorage() 
 	{
 		//Creation of objects
-		Participant p1 = Service.createParticipant("Dennis", "Vej21", 9876543, "lol@gmail.nu", false);
-		Participant p2 = Service.createParticipant("Dennissss", "Vej2221", 98276543, "lo123l@gmail.nu", true);
-		Companion c1 = Service.createCompanion("Lars Allan for fanden");
+		Participant p1 = Service.createParticipant("Dennis", "Vej21", 41276398, "England", false);
+		Participant p2 = Service.createParticipant("Jørgen", "Vej2221", 28676543, "Denmark", true);
+		Participant p3 = Service.createParticipant("Gitte", "Vej21", 51613692, "Denmark", false);
+		Participant p4 = Service.createParticipant("Leif", "Vej2221", 36519883, "Germany", false);
+		Participant p5 = Service.createParticipant("Hanne", "Vej21", 71647934, "Sweden", false);
+		Participant p6 = Service.createParticipant("Kurt", "Horsens Allé 12", 72515326, "Denmark", false);
+		Companion c1 = Service.createCompanion("Helle");
 		Conference co1 = Service.createConference("Bæver konf", "her", LocalDate.of(2001, 2, 17), LocalDate.of(2001, 2, 20), 1000);
 		Conference co2 = Service.createConference("Egn konf", "der", LocalDate.of(2010, 2, 17), LocalDate.of(2010, 2, 20), 5000);
 		Registration r1 = Service.createRegistration(co1, p1, co1.getStartTime(), co1.getEndTime());
 		Registration r2 = Service.createRegistration(co2, p2, co2.getStartTime(), co2.getEndTime());
-		Hotel h1 = Service.createHotel("Hotel fint", 200);		
+//		Registration r3 = Service.createRegistration(co1, p3, co1.getStartTime(), co1.getEndTime());
+//		Registration r4 = Service.createRegistration(co2, p4, co2.getStartTime(), co2.getEndTime());
+//		Registration r5 = Service.createRegistration(co1, p5, co1.getStartTime(), co1.getEndTime());
+//		Registration r6 = Service.createRegistration(co2, p6, co2.getStartTime(), co2.getEndTime());
+		Hotel h1 = Service.createHotel("Hotel fint", 200);	
+		Hotel h2 = Service.createHotel("Hotel knap-så-fint", 100);
 		HotelService hs1 = Service.createHotelService("Morgenmad", 100);
 		HotelService hs2 = Service.createHotelService("Swimming Pool access", 200);
 		Excursion e1 = Service.createExcursion("Hyggetur til irma", 100, LocalDate.now());
@@ -282,8 +301,11 @@ public class Service {
 		Service.addHotelServiceToHotel(h1, hs2);
 		Service.setHotelToRegistration(r1, h1);
 		Service.setHotelToRegistration(r2, h1);
+		Service.addHotelOfConference(h1, co1);
+		Service.addHotelOfConference(h2, co1);
 		Service.updateCompanionOfParticipant(c1, p1);
 		Service.addCompanionToExcursion(c1, e1);
+		Service.addExcursionToConference(e1, co1);
 
 	}
 

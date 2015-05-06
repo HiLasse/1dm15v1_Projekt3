@@ -139,5 +139,11 @@ public class Registration
 		this.hotelServices.add(hotelService);
 	}
 
+	public Participant getParticipant() {
+		return participant;
+	}
+	
+	
+
 
 }
