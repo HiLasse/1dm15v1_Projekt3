@@ -191,7 +191,7 @@ public class ParticipantPane extends GridPane {
 		return list;
 	}
 	
-	private ArrayList<Excursion> initExcursionList() -- test
+	private ArrayList<Excursion> initExcursionList()
 	{
 		ArrayList<Excursion> list = new ArrayList<>();
 		for(Registration regi: Service.getRegistration())
@@ -312,7 +312,6 @@ public class ParticipantPane extends GridPane {
 			}
 			
 			// Hotel Service
-			-- Test
 			for(Registration x: Service.getRegistration()) 
 			{
 				if(x.getParticipant().equals(participant))
@@ -323,7 +322,6 @@ public class ParticipantPane extends GridPane {
 			}
 			
 			//Excursion
-			-- Test
 			for(Registration x: Service.getRegistration()) 
 			{
 				if(x.getParticipant().equals(participant))
