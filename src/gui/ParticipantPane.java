@@ -12,7 +12,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import model.Conference;
+import model.Excursion;
 import model.Hotel;
+import model.HotelService;
 import model.Participant;
 import model.Registration;
 import service.Service;
@@ -20,7 +22,8 @@ import service.Service;
 public class ParticipantPane extends GridPane {
 	private ComboBox<Conference> cbbConference;
 	private Label lblConference, lblParticipant, lblAddress, lblTime, lblCountryOrCity, lblPhoneNr, lblCompany, lblCompanion, lblExcursion, lblHotel, lblHotelService, lblPrice;
-	private ListView  lvwExcursion, lvwHotelService;
+	private ListView<Excursion>  lvwExcursion; 
+	private ListView<HotelService>lvwHotelService;
 	private ListView<Participant> lvwParticipant;
 	private TextField txfConf, txfAdress, txfTime, txfCountryOrCity, txfPhoneNr, txfCompany, txfCompanion, txfHotel, txfPrice;
 	private CheckBox chbLecturer;
@@ -187,6 +190,16 @@ public class ParticipantPane extends GridPane {
 		}
 		return list;
 	}
+	
+	private ArrayList<Excursion> initExcursionList() -- test
+	{
+		ArrayList<Excursion> list = new ArrayList<>();
+		for(Registration regi: Service.getRegistration())
+		{
+			list = regi.getExcursions();
+		}
+		return list;
+	}
 
 
 	private void createAction()
@@ -236,17 +249,21 @@ public class ParticipantPane extends GridPane {
 	private void selectedParticipantChanged() {
 		this.updateControls();
 	}
+	
+	
 
 	private void updateControls()
 	{
 		Participant participant = lvwParticipant.getSelectionModel().getSelectedItem();
 		Conference conference = cbbConference.getSelectionModel().getSelectedItem();
+		Excursion excursion = lvwExcursion.getSelectionModel().getSelectedItem();
 		if ( participant != null)
 		{
 			txfAdress.setText(participant.getAddress());
 			txfCountryOrCity.setText(participant.getCountryOrCity());
 			txfPhoneNr.setText(""+participant.getTelephone());
-
+			
+			//Company
 			if( participant.getCompany() != null)
 			{
 				txfCompany.setText(participant.getCompany()+"");
@@ -256,6 +273,7 @@ public class ParticipantPane extends GridPane {
 				txfCompany.clear();
 			}
 			
+			//Lecturer
 			if (participant.isLecture())
 			{
 				chbLecturer.setDisable(false);
@@ -266,10 +284,11 @@ public class ParticipantPane extends GridPane {
 				chbLecturer.setDisable(true);
 				chbLecturer.setSelected(false);
 			}
-
+			
+			//Companion
 //			for(Participant x: conference.getParticipantsArray())
 //			{
-//				if(x.equals(participant))
+//				if(x.getCompanion().equals(participant.getCompanion()))
 //				{
 //					if (x.getCompanion().getName().trim().length() > 0)
 //					{
@@ -277,12 +296,39 @@ public class ParticipantPane extends GridPane {
 //					}
 //				}
 //			}
-
+			
+			// Hotel
 			for(Registration x: Service.getRegistration())
 			{
 				if(x.getParticipant().equals(participant))
 				{
 					txfHotel.setText(x.getHotel().getName());
+				}
+//				else 
+//				{ 
+//					txfHotel.clear();
+//				}
+				txfPrice.setText(x.calcTotalPrice()+"");
+			}
+			
+			// Hotel Service
+			-- Test
+			for(Registration x: Service.getRegistration()) 
+			{
+				if(x.getParticipant().equals(participant))
+				{
+					lvwHotelService.getItems().setAll(x.getHotelServices());
+				}
+				txfPrice.setText(x.calcTotalPrice()+"");
+			}
+			
+			//Excursion
+			-- Test
+			for(Registration x: Service.getRegistration()) 
+			{
+				if(x.getParticipant().equals(participant))
+				{
+					lvwExcursion.getItems().setAll(x.getExcursions());
 				}
 				txfPrice.setText(x.calcTotalPrice()+"");
 			}

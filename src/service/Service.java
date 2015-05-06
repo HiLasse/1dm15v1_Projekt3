@@ -83,12 +83,17 @@ public class Service {
 	public static HotelService createHotelService(String name, double price)
 	{
 		HotelService hotelservice = new HotelService(name,price);
+		Storage.addHotelService(hotelservice);
 		return hotelservice;
 	}
 
 	public static void updateHotelService(HotelService hotelService, String name, double price) {
 		hotelService.setName(name);
 		hotelService.setPrice(price);
+	}
+	
+	public static void deleteHotelService(HotelService hotelService) {
+		Storage.removeHotelService(hotelService);
 	}
 
 	//-----------------------------------------------------------------------------------------
@@ -280,6 +285,10 @@ public class Service {
 		Conference co2 = Service.createConference("Egn konf", "der", LocalDate.of(2010, 2, 17), LocalDate.of(2010, 2, 20), 5000);
 		Registration r1 = Service.createRegistration(co1, p1, co1.getStartTime(), co1.getEndTime());
 		Registration r2 = Service.createRegistration(co2, p2, co2.getStartTime(), co2.getEndTime());
+//		Registration r3 = Service.createRegistration(co1, p3, co1.getStartTime(), co1.getEndTime());
+//		Registration r4 = Service.createRegistration(co2, p4, co2.getStartTime(), co2.getEndTime());
+//		Registration r5 = Service.createRegistration(co1, p5, co1.getStartTime(), co1.getEndTime());
+//		Registration r6 = Service.createRegistration(co2, p6, co2.getStartTime(), co2.getEndTime());
 		Hotel h1 = Service.createHotel("Hotel fint", 200);	
 		Hotel h2 = Service.createHotel("Hotel knap-så-fint", 100);
 		HotelService hs1 = Service.createHotelService("Morgenmad", 100);
@@ -296,6 +305,7 @@ public class Service {
 		Service.addHotelOfConference(h2, co1);
 		Service.updateCompanionOfParticipant(c1, p1);
 		Service.addCompanionToExcursion(c1, e1);
+		Service.addExcursionToConference(e1, co1);
 
 	}
 
