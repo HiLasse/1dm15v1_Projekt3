@@ -28,7 +28,7 @@ public class Conference {
 	/**
 	 * participants of Conference
 	 */
-	private ArrayList<Participant> participants = new ArrayList<>();
+	private ArrayList<Registration> registrations = new ArrayList<>();
 
 	/**
 	 * excurtions during Conference
@@ -164,24 +164,24 @@ public class Conference {
 	//participans methods
 	
 	/**
-	 * @return the participants ArrayList of the Conference
+	 * @return the registrations ArrayList of the Conference
 	 */
-	public ArrayList<Participant> getParticipantsArray() {
-		return participants;
+	public ArrayList<Registration> getRegistrationsArray() {
+		return registrations;
 	}
 
 	/**
-	 * @param participant adds Participant object to participants ArrayList
+	 * @param registration adds Participant object to participants ArrayList
 	 */
-	public void addParticipant(Participant participant) {
-		this.participants.add(participant);
+	public void addRegistration(Registration registration) {
+		this.registrations.add(registration);
 	}
 	/**
 	 * Removes specified Participant object for participants ArrayList
-	 * @param participant to be removed
+	 * @param registration to be removed
 	 */
-	public void removeParticipant(Participant participant){
-		this.participants.remove(participant);
+	public void removeParticipant(Registration registration){
+		this.registrations.remove(registration);
 	}
 
 	//-----------------------------------------------------------------------------------------
