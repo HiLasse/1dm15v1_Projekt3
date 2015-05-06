@@ -1,19 +1,11 @@
 package gui;
 
-import service.Service;
-import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.geometry.VPos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
 public class ConferencePane extends GridPane {
 	private Label lblConference, lblHotel, lblParticipant, lblPlace, lblTime, lblPrice, lblExcursion, lblCompanion;
@@ -132,7 +124,7 @@ public class ConferencePane extends GridPane {
         //Button actions-----------------------------------------------------------
         btnCreate.setOnAction(event -> createAction());
         
-        
+        btnRegister.setOnAction(event -> registerAction());
         
     }
 	
@@ -150,6 +142,16 @@ public class ConferencePane extends GridPane {
 
 
     }
+    
+    private void registerAction() {
+        RegisterDialog dia = new RegisterDialog("Create conference");
+        dia.showAndWait();
+
+        // Wait for the modal dialog to close
+
+
+    }
+    
 //
 //    private void updateAction() {
 //        Company company = lvwCompanies.getSelectionModel().getSelectedItem();

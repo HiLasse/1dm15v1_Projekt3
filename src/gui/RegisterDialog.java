@@ -1,9 +1,6 @@
 package gui;
 
 
-import model.Conference;
-import model.Participant;
-import javafx.beans.value.ChangeListener;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;

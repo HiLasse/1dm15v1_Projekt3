@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import model.Conference;
 import model.Excursion;
 import model.Hotel;
@@ -38,6 +39,16 @@ public class ParticipantPane extends GridPane {
 
 		//col1
 		row = 0;
+		lblConference = new Label("Conferences");
+		this.add(lblConference, 0, row);
+
+		row++;
+		cbbConference = new ComboBox<>();
+		this.add(cbbConference, 0, row);
+		cbbConference.getItems().setAll(Service.getConferences());
+		
+		
+		row++;
 		lblParticipant = new Label("Participant");
 		this.add(lblParticipant, 0, row, 3, 1);
 
@@ -89,30 +100,35 @@ public class ParticipantPane extends GridPane {
 				txfCompany = new TextField();
 				this.add(txfCompany, 0, row, 3, 1);
 				txfCompany.setEditable(false);
-
+				
 				row++;
+				HBox hbox1 = new HBox();
+				this.add(hbox1, 0, row, 3, 1);
+				hbox1.setSpacing(20);;
+				
 				btnCreate = new Button("Create");
-				this.add(btnCreate, 0, row);
-
-
 				btnEdit = new Button("Edit");
-				this.add(btnEdit, 1, row);
-
 				btnDelete = new Button("Delete");
-				this.add(btnDelete, 2, row);
+				
+				hbox1.getChildren().addAll(btnCreate, btnEdit, btnDelete);
 
+				
+				
+
+//				row++;
+//				btnCreate = new Button("Create");
+//				this.add(btnCreate, 0, row);
+//
+//
+//				btnEdit = new Button("Edit");
+//				this.add(btnEdit, 1, row);
+//
+//				btnDelete = new Button("Delete");
+//				this.add(btnDelete, 2, row);
+				
+				
 				//col2
-				row = 1;
-				lblConference = new Label("Conferences");
-				this.add(lblConference, 3, row);
-
-				row++;
-				//WIP
-				cbbConference = new ComboBox<>();
-				this.add(cbbConference, 3, row);
-				cbbConference.getItems().setAll(Service.getConferences());
-
-				row++;
+				row=5;
 				lblTime = new Label("Time");
 				this.add(lblTime, 3, row);
 
@@ -142,15 +158,7 @@ public class ParticipantPane extends GridPane {
 				//        lvwExorsion.getItems().setAll(Service.getHotels());
 
 				//col3
-				row=2;
-				lblPrice = new Label("Price");
-				this.add(lblPrice, 4, row);
-
-				txfPrice = new TextField();
-				this.add(txfPrice, 5, row);
-				txfPrice.setEditable(false);
-
-				row+=2;
+				row=6;
 				chbLecturer = new CheckBox("Lecturer");
 				this.add(chbLecturer, 4, row, 2, 1);
 				chbLecturer.setDisable(true);
@@ -173,6 +181,14 @@ public class ParticipantPane extends GridPane {
 				this.add(lvwHotelService, 4, row, 2, 7);
 				lvwHotelService.setPrefWidth(200);
 				lvwHotelService.setPrefHeight(200);
+
+				row+=7;
+				lblPrice = new Label("Price");
+				this.add(lblPrice, 4, row);
+
+				txfPrice = new TextField();
+				this.add(txfPrice, 5, row);
+				txfPrice.setEditable(false);
 
 				btnCreate.setOnAction(event -> this.createAction());
 				btnEdit.setOnAction(event -> this.updateAction());
