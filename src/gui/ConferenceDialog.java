@@ -1,14 +1,24 @@
 package gui;
 
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
+import service.Service;
+import storage.Storage;
 import model.Conference;
+import model.Hotel;
+import model.Excursion;
+import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -38,10 +48,14 @@ public class ConferenceDialog extends Stage {
     }
 
     // -------------------------------------------------------------------------
-    private Label lblName, lblPlace, lblDay, lblMonth, lblYear, lblStartTime, lblEndTime, lblHotels, lblAllHotels, lblExcursions, lblAllExcursions;
-    private TextField txfName, txfPlace, txfStartDay, txfStartMonth ,txfStartYear, txfEndDay, txfEndMonth, txfEndYear;
-    private ListView lvwHotels, lvwAllHotels, lvwExcursions, lvwAllExcursions;
+    private Label lblName, lblPlace, lblPrice, lblStartTime, lblEndTime, lblHotels, lblAllHotels, lblExcursions, lblAllExcursions;
+    private TextField txfName, txfPlace, txfPrice, txfStartMonth ,txfStartYear, txfEndDay, txfEndMonth, txfEndYear;
+    private ListView<Hotel> lvwHotels, lvwAllHotels;
+    private ListView<Excursion> lvwExcursions, lvwAllExcursions;
     private int row;
+    private LocalDate startTime, endTime;
+    private DatePicker startDatePicker, endDatePicker;
+    private ArrayList<Hotel> hotels = new ArrayList<>();
 
     private void initContent(GridPane pane) {
         pane.setPadding(new Insets(10));
@@ -67,54 +81,30 @@ public class ConferenceDialog extends Stage {
         pane.add(txfPlace, 0, row, 2, 1);
         
         row++;
-        //---tidpane start---
-        GridPane timePane = new GridPane();
-        pane.add(timePane, 0, row, 2, 1);
-        timePane.setHgap(10);
-        timePane.setVgap(10);
-        timePane.setGridLinesVisible(false);
+      lblStartTime = new Label("Start time");
+      pane.add(lblStartTime, 0, row);
+      
+        row++;
+        startDatePicker = new DatePicker();
+        startDatePicker.setOnAction(event -> {startTime = startDatePicker.getValue();});
+        pane.add(startDatePicker, 0, row);
         
-        lblDay = new Label("Day");
-        timePane.add(lblDay, 1, 0);
-        
-        lblMonth = new Label("Month");
-        timePane.add(lblMonth, 2, 0);
-        
-        lblYear = new Label("Year");
-        timePane.add(lblYear, 3, 0);
-        
-        lblStartTime = new Label("Start time");
-        timePane.add(lblStartTime, 0, 1);
-
+        row++;
         lblEndTime = new Label("End time");
-        timePane.add(lblEndTime, 0, 2);
+        pane.add(lblEndTime, 0, row);
         
-        txfStartDay = new TextField();
-        timePane.add(txfStartDay, 1, 1);
-        txfStartDay.setPrefWidth(40);
+        row++;
+        endDatePicker = new DatePicker();
+        endDatePicker.setOnAction(event -> {endTime = endDatePicker.getValue();});
+        pane.add(endDatePicker, 0, row);
         
-        txfStartMonth = new TextField();
-        timePane.add(txfStartMonth, 2, 1);
-        txfStartMonth.setPrefWidth(40);
+        row++;
+        lblPrice = new Label("Price");
+        pane.add(lblPrice, 0, row);
         
-        txfStartYear = new TextField();
-        timePane.add(txfStartYear, 3, 1);
-        txfStartYear.setPrefWidth(60);
-        
-        txfEndDay = new TextField();
-        timePane.add(txfEndDay, 1, 2);
-        txfEndDay.setPrefWidth(40);
-        
-        txfEndMonth = new TextField();
-        timePane.add(txfEndMonth, 2, 2);
-        txfEndMonth.setPrefWidth(40);
-        
-        txfEndYear = new TextField();
-        timePane.add(txfEndYear, 3, 2);
-        txfEndYear.setPrefWidth(60);
-        
-        //---tidpane slut---
-
+        row++;
+        txfPrice = new TextField();
+        pane.add(txfPrice, 0, row);
         
         row++;
         lblHotels = new Label("Hotels");
@@ -128,12 +118,20 @@ public class ConferenceDialog extends Stage {
         pane.add(lvwHotels, 0, row);
         lvwHotels.setPrefWidth(150);
         lvwHotels.setPrefHeight(100);
-        
+
         lvwAllHotels = new ListView<>();
         pane.add(lvwAllHotels, 1, row);
         lvwAllHotels.setPrefWidth(150);
         lvwAllHotels.setPrefHeight(100);
-//        lvwAllHotels.getItems().setAll(Service.getHotels());        
+        lvwAllHotels.getItems().setAll(Storage.getHotels());
+//        lvwAllHotels.setOnMouseClicked(new EventHandler<MouseEvent>(){
+//        	public void handle(MouseEvent click){
+//        		if (click.getClickCount() == 2) {
+//        		hotels.add(lvwAllHotels.getSelectionModel().getSelectedItem());
+//        		}
+//        	}});
+        
+        //lvwAllHotels.getSelectionModel().getSelectedItem();
         
         row++;
         lblExcursions = new Label("Excursions");
@@ -160,7 +158,7 @@ public class ConferenceDialog extends Stage {
         pane.add(btnOK, 0, row);
         pane.setHalignment(btnOK, HPos.RIGHT);
 //        GridPane.setHalignment(btnOK, HPos.RIGHT);
-//        btnOK.setOnAction(event -> this.okAction());
+        btnOK.setOnAction(event -> this.okAction());
         
         Button btnCancel = new Button("Cancel");
         pane.add(btnCancel, 1, row);
@@ -194,7 +192,26 @@ public class ConferenceDialog extends Stage {
         this.hide();
     }
 
-//    private void okAction() {
+    private void okAction() {
+    	String name = txfName.getText().trim();
+    	String address = txfPlace.getText().trim();
+    	int price = 0;
+    	try {
+    		price = Integer.parseInt(txfPrice.getText().trim());
+    	} catch (NumberFormatException ex) {
+            // do nothing
+        }
+    	
+    	Service.createConference(name, address, startTime, endTime, price);
+    	
+    	for(int i = 0; i < hotels.size(); i++){
+    		if (hotels.get(i) != null){
+    		this.conference.addHotel(hotels.get(i));
+    		}
+    	}
+        this.hide();
+    }
+
 //        String name = txfName.getText().trim();
 //        if (name.length() == 0) {
 //            lblError.setText("Name is empty");

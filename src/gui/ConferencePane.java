@@ -172,7 +172,7 @@ public class ConferencePane extends GridPane {
     }
     
     private void registerAction() {
-        RegisterDialog dia = new RegisterDialog("Create conference");
+        RegisterDialog dia = new RegisterDialog("Register participant");
         dia.showAndWait();
 
         // Wait for the modal dialog to close
@@ -236,12 +236,12 @@ public class ConferencePane extends GridPane {
         txfTime.clear();        
         
     	lvwCompanion.getItems().setAll(lvwConference.getSelectionModel().getSelectedItem().getCompanions());
-    	lvwHotel.getItems().setAll(lvwConference.getSelectionModel().getSelectedItem().getHotel());
+    	lvwHotel.getItems().setAll(lvwConference.getSelectionModel().getSelectedItem().getHotelsArray());
     	lvwParticipant.getItems().setAll(lvwConference.getSelectionModel().getSelectedItem().getParticipants());
     	lvwExcursion.getItems().setAll(lvwConference.getSelectionModel().getSelectedItem().getExcursion());
     	
     	txfPrice.setText(lvwConference.getSelectionModel().getSelectedItem().getPrice()+"");
-    	txfTime.setText(lvwConference.getSelectionModel().getSelectedItem().getTotaltime()+"");
+    	txfTime.setText("" + lvwConference.getSelectionModel().getSelectedItem().getStartTime() + " to " + lvwConference.getSelectionModel().getSelectedItem().getEndTime() +" "+ lvwConference.getSelectionModel().getSelectedItem().getTotaltime()+" days");
     	txfPlace.setText(lvwConference.getSelectionModel().getSelectedItem().getAddress());
     	
     }

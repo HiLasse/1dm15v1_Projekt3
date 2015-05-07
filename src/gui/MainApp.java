@@ -23,8 +23,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) {
-        stage.setTitle("KAS");
-		//stage.setTitle("CuteOwl Conference Administrator 0.0.1");
+        stage.setTitle("KAS - pre Alpha");
 		stage.getIcons().add(new Image("file:resources/cuteOwl.png"));
         BorderPane pane = new BorderPane();
         this.initContent(pane);

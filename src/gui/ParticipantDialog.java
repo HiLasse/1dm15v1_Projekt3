@@ -94,6 +94,13 @@ public class ParticipantDialog extends Stage {
         Button btnOK = new Button("OK");
         pane.add(btnOK, 0, row);
         
+        if(this.participant != null) {
+            txfName.setText(participant.getName()+"");
+            txfAddress.setText(participant.getAddress()+"");
+            txfCountryOrCity.setText(participant.getCountryOrCity()+"");
+            txfPhoneNr.setText(participant.getTelephone()+"");
+            txfCompany.setText(participant.getCompany()+"");
+         }
 //        GridPane.setHalignment(btnOK, HPos.RIGHT);
         btnOK.setOnAction(event -> this.okAction());
         

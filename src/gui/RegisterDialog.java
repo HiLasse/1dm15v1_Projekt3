@@ -1,12 +1,16 @@
 package gui;
 
 
+import java.time.LocalDate;
+
+import service.Service;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -38,6 +42,8 @@ public class RegisterDialog extends Stage {
     private CheckBox chbCompanion, chbHotel;
 	private ComboBox<Object> cbbConference, cbbHotel;
 	private int row;
+    private LocalDate startTime, endTime;
+    private DatePicker startDatePicker, endDatePicker;
 
     private void initContent(GridPane pane) {
         pane.setPadding(new Insets(10));
@@ -57,6 +63,7 @@ public class RegisterDialog extends Stage {
         row++;
         cbbConference = new ComboBox<>();
         pane1.add(cbbConference, 0, row, 2, 1);
+        cbbConference.getItems().setAll(Service.getConferences());
         
         row++;
         lblParticipant = new Label("Participant");
@@ -67,6 +74,7 @@ public class RegisterDialog extends Stage {
         pane1.add(lvwParticipant, 0, row);
         lvwParticipant.setPrefWidth(150);
         lvwParticipant.setPrefHeight(100);
+        lvwParticipant.getItems().setAll(Service.getParticipants());
 //        lvwParticipant.getItems().setAll(this.initParticipantList());
 //        ChangeListener<Participant> listener =
 //                (ov, oldParticipant, newParticipant) -> this.selectedParticipantChanged();
@@ -76,52 +84,22 @@ public class RegisterDialog extends Stage {
         pane1.add(btnCreate, 1, row);
         
         row++;
-        //---tidpane start---
-        GridPane timePane = new GridPane();
-        pane1.add(timePane, 0, row, 2, 1);
-        timePane.setHgap(10);
-        timePane.setVgap(10);
-        timePane.setGridLinesVisible(false);
+      lblStartTime = new Label("Start time");
+      pane.add(lblStartTime, 0, row);
+      
+        row++;
+        startDatePicker = new DatePicker();
+        startDatePicker.setOnAction(event -> {startTime = startDatePicker.getValue();});
+        pane.add(startDatePicker, 0, row);
         
-        lblDay = new Label("Day");
-        timePane.add(lblDay, 1, 0);
-        
-        lblMonth = new Label("Month");
-        timePane.add(lblMonth, 2, 0);
-        
-        lblYear = new Label("Year");
-        timePane.add(lblYear, 3, 0);
-        
-        lblStartTime = new Label("Start time");
-        timePane.add(lblStartTime, 0, 1);
-
+        row++;
         lblEndTime = new Label("End time");
-        timePane.add(lblEndTime, 0, 2);
+        pane.add(lblEndTime, 0, row);
         
-        txfStartDay = new TextField();
-        timePane.add(txfStartDay, 1, 1);
-        txfStartDay.setPrefWidth(40);
-        
-        txfStartMonth = new TextField();
-        timePane.add(txfStartMonth, 2, 1);
-        txfStartMonth.setPrefWidth(40);
-        
-        txfStartYear = new TextField();
-        timePane.add(txfStartYear, 3, 1);
-        txfStartYear.setPrefWidth(60);
-        
-        txfEndDay = new TextField();
-        timePane.add(txfEndDay, 1, 2);
-        txfEndDay.setPrefWidth(40);
-        
-        txfEndMonth = new TextField();
-        timePane.add(txfEndMonth, 2, 2);
-        txfEndMonth.setPrefWidth(40);
-        
-        txfEndYear = new TextField();
-        timePane.add(txfEndYear, 3, 2);
-        txfEndYear.setPrefWidth(60);
-        //---tidpane slut---
+        row++;
+        endDatePicker = new DatePicker();
+        endDatePicker.setOnAction(event -> {endTime = endDatePicker.getValue();});
+        pane.add(endDatePicker, 0, row);
         
         
         GridPane pane2 = new GridPane();
@@ -151,6 +129,7 @@ public class RegisterDialog extends Stage {
         pane2.add(lvwExcursions, 0, row);
         lvwExcursions.setPrefWidth(150);
         lvwExcursions.setPrefHeight(100);
+        //lvwExcursions.getItems().setAll(Service.getExcurtions())
 
         
         lvwAllExcursions = new ListView<>();
@@ -169,6 +148,7 @@ public class RegisterDialog extends Stage {
         cbbHotel = new ComboBox<Object>();
         pane2.add(cbbHotel, 0, row, 2, 1);
         cbbHotel.setDisable(true);
+        //cbbHotel.getItems().setAll();
         
         
         row++;
