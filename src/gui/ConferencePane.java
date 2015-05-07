@@ -233,7 +233,7 @@ public class ConferencePane extends GridPane {
     public void updateControls() {
         txfPlace.clear();
         txfPrice.clear();
-        txfTime.clear();        
+        txfTime.clear();
         
     	lvwCompanion.getItems().setAll(lvwConference.getSelectionModel().getSelectedItem().getCompanions());
     	lvwHotel.getItems().setAll(lvwConference.getSelectionModel().getSelectedItem().getHotelsArray());
